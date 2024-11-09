@@ -316,20 +316,20 @@ namespace ServicesMuoqa.Views
             // 
             servicesData.AllowUserToAddRows = false;
             servicesData.AllowUserToResizeRows = false;
-            servicesData.BackgroundColor = Color.FromArgb(46, 51, 70);
+            servicesData.BackgroundColor = Color.FromArgb(10, 16, 25);
             servicesData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(46, 51, 70);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(10, 16, 25);
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(200, 200, 200);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(46, 51, 70);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(10, 16, 25);
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(100, 100, 100);
             servicesData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             servicesData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 6, 30);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(10, 16, 25);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = Color.FromArgb(250, 250, 250);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 6, 30);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(10, 16, 25);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             servicesData.DefaultCellStyle = dataGridViewCellStyle2;
@@ -347,7 +347,7 @@ namespace ServicesMuoqa.Views
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(43, 44, 51);
+            BackColor = Color.FromArgb(10, 16, 25);
             ClientSize = new Size(1239, 518);
             Controls.Add(servicesData);
             Controls.Add(groupSearch);

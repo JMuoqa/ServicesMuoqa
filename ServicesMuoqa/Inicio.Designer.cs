@@ -36,7 +36,7 @@
             // 
             // Container
             // 
-            Container.BackColor = Color.FromArgb(43, 44, 51);
+            Container.BackColor = Color.FromArgb(10, 16, 25);
             Container.Location = new Point(12, 104);
             Container.Name = "Container";
             Container.Size = new Size(1239, 518);
@@ -64,7 +64,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(43, 44, 51);
+            BackColor = Color.FromArgb(10, 16, 25);
             ClientSize = new Size(1263, 634);
             Controls.Add(Container);
             Controls.Add(Menu);
