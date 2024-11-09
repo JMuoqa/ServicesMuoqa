@@ -52,9 +52,8 @@ namespace ServicesMuoqa.Views
             label3 = new Label();
             nameTextEdit = new TextBox();
             groupSearch = new GroupBox();
+            cmbTextSearch = new ComboBox();
             searchButton = new Button();
-            textSearch = new TextBox();
-            priceLabelSearch = new Label();
             nameLabelSearch = new Label();
             idLabelSearch = new Label();
             servicesData = new DataGridView();
@@ -263,9 +262,8 @@ namespace ServicesMuoqa.Views
             // 
             // groupSearch
             // 
+            groupSearch.Controls.Add(cmbTextSearch);
             groupSearch.Controls.Add(searchButton);
-            groupSearch.Controls.Add(textSearch);
-            groupSearch.Controls.Add(priceLabelSearch);
             groupSearch.Controls.Add(nameLabelSearch);
             groupSearch.Controls.Add(idLabelSearch);
             groupSearch.ForeColor = Color.White;
@@ -275,6 +273,16 @@ namespace ServicesMuoqa.Views
             groupSearch.TabIndex = 3;
             groupSearch.TabStop = false;
             groupSearch.Text = "Buscar";
+            // 
+            // cmbTextSearch
+            // 
+            cmbTextSearch.FormattingEnabled = true;
+            cmbTextSearch.Location = new Point(6, 57);
+            cmbTextSearch.Name = "cmbTextSearch";
+            cmbTextSearch.Size = new Size(219, 23);
+            cmbTextSearch.TabIndex = 14;
+            cmbTextSearch.KeyDown += cmbTextSearch_KeyDown;
+            cmbTextSearch.KeyUp += cmbTextSearch_KeyUp;
             // 
             // searchButton
             // 
@@ -286,52 +294,28 @@ namespace ServicesMuoqa.Views
             searchButton.Text = "Buscar";
             searchButton.UseVisualStyleBackColor = true;
             // 
-            // textSearch
-            // 
-            textSearch.Location = new Point(6, 57);
-            textSearch.Name = "textSearch";
-            textSearch.PlaceholderText = "ID";
-            textSearch.Size = new Size(219, 23);
-            textSearch.TabIndex = 3;
-            // 
-            // priceLabelSearch
-            // 
-            priceLabelSearch.AutoSize = true;
-            priceLabelSearch.Location = new Point(185, 31);
-            priceLabelSearch.Name = "priceLabelSearch";
-            priceLabelSearch.Size = new Size(40, 15);
-            priceLabelSearch.TabIndex = 2;
-            priceLabelSearch.Text = "Precio";
-            priceLabelSearch.Click += LabelSearch_Click;
-            priceLabelSearch.MouseLeave += LabelSearch_MouseLeave;
-            priceLabelSearch.MouseHover += LabelSearch_MouseHover;
-            // 
             // nameLabelSearch
             // 
             nameLabelSearch.AutoSize = true;
-            nameLabelSearch.Location = new Point(84, 31);
+            nameLabelSearch.Location = new Point(30, 31);
             nameLabelSearch.Name = "nameLabelSearch";
             nameLabelSearch.Size = new Size(51, 15);
             nameLabelSearch.TabIndex = 1;
             nameLabelSearch.Text = "Nombre";
-            nameLabelSearch.Click += LabelSearch_Click;
-            nameLabelSearch.MouseLeave += LabelSearch_MouseLeave;
-            nameLabelSearch.MouseHover += LabelSearch_MouseHover;
             // 
             // idLabelSearch
             // 
             idLabelSearch.AutoSize = true;
             idLabelSearch.Location = new Point(6, 31);
             idLabelSearch.Name = "idLabelSearch";
-            idLabelSearch.Size = new Size(18, 15);
+            idLabelSearch.Size = new Size(26, 15);
             idLabelSearch.TabIndex = 0;
-            idLabelSearch.Text = "ID";
-            idLabelSearch.Click += LabelSearch_Click;
-            idLabelSearch.MouseLeave += LabelSearch_MouseLeave;
-            idLabelSearch.MouseHover += LabelSearch_MouseHover;
+            idLabelSearch.Text = "ID /";
             // 
             // servicesData
             // 
+            servicesData.AllowUserToAddRows = false;
+            servicesData.AllowUserToResizeRows = false;
             servicesData.BackgroundColor = Color.FromArgb(46, 51, 70);
             servicesData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -358,8 +342,6 @@ namespace ServicesMuoqa.Views
             servicesData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             servicesData.Size = new Size(1215, 346);
             servicesData.TabIndex = 4;
-            servicesData.AllowUserToAddRows = false;
-            servicesData.AllowUserToResizeRows = false;
             // 
             // ViewMain
             // 
@@ -415,5 +397,6 @@ namespace ServicesMuoqa.Views
         private Button searchButton;
         private DataGridView servicesData;
         private Button activateBtn;
+        private ComboBox cmbTextSearch;
     }
 }

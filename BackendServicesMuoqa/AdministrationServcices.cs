@@ -110,5 +110,19 @@ namespace BackendServicesMuoqa
             }
         }
 
+        public List<ServicesPrices> SearchServices(string text)
+        {
+            try
+            {
+                List<ServicesPrices> listServices = _conn.ServicesPrices.Where(u=> u.ServiceName.StartsWith(text)).ToList();
+                return listServices;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
