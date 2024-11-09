@@ -25,7 +25,9 @@ namespace ServicesMuoqa
                 var services = serviceScope.ServiceProvider;
                 try
                 {
-                    var mainForm = services.GetRequiredService<Inicio>();
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    var mainForm = services.GetRequiredService<Inicio>(); 
                     Application.Run(mainForm);
                 }
                 catch (Exception ex)
@@ -41,7 +43,6 @@ namespace ServicesMuoqa
             return Host.CreateDefaultBuilder().ConfigureAppConfiguration/*Esto es para a�adir archivos de configuracion*/((context, config) =>
             {
                 // Configuraci�n adicional si es necesaria
-                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             }).ConfigureServices((context, services) =>
             {
                 string connectionString2 = Environment.GetEnvironmentVariable("MuoqaBD");

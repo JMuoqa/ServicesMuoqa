@@ -60,7 +60,7 @@ namespace ServicesMuoqa.Views
             try
             {
                 ServicesPrices objData = CheckAdditionParameters();
-                if (objData != null)
+                if (objData == null)
                 {
                     throw new Exception("No se encontro ningun servicio");
                 }
