@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using ServicesMuoqa.Views;
 
@@ -5,14 +6,14 @@ namespace ServicesMuoqa
 {
     public partial class Inicio : Form
     {
-        private readonly ViewMain _viewMain;
-        public Inicio(ViewMain viewMain)
+        private readonly IServiceProvider _serviceProvider;
+        public Inicio(IServiceProvider serviceProvider)
         {
-            _viewMain = viewMain ?? throw new ArgumentNullException(nameof(viewMain));
+            _serviceProvider = serviceProvider;
             InitializeComponent();
-            CallView(_viewMain);
+            CallView(typeof(MainView));
         }
-        private void CallView(object view)
+        private void CallView(Type view)
         {
             try
             {
@@ -25,7 +26,8 @@ namespace ServicesMuoqa
                         break;
                     }
                 }
-                Form fh = view as Form;
+                //Para obtener el servicio
+                Form fh = _serviceProvider.GetService(view) as Form;
                 fh.TopLevel = false;
                 fh.Dock = DockStyle.Fill;
                 this.Container.Controls.Add(fh);
@@ -40,7 +42,11 @@ namespace ServicesMuoqa
         }
         private void informacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CallView(_viewMain);
+            CallView(typeof(MainView));
+        }
+        private void cargarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CallView(typeof(UploadJob));
         }
     }
 }

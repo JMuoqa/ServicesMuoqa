@@ -16,28 +16,15 @@ using System.Xml.Linq;
 
 namespace ServicesMuoqa.Views
 {
-    public partial class ViewMain : Form
+    public partial class MainView : Form
     {
         private readonly AdministrationServcices _logic;
-        public ViewMain(AdministrationServcices logic)
+        public MainView(AdministrationServcices logic)
         {
             _logic = logic ?? throw new ArgumentNullException(nameof(logic));
             InitializeComponent();
-            ChangeServices();
+            GetAllServices();
             ElementProperties();
-        }
-        private void ChangeServices()
-        {
-            try
-            {
-                DataTable data = _logic.ChangeServices();
-                LoadGrid(data);
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-                Console.WriteLine(ex.Message);
-            }
         }
         private void editButton_Click(object sender, EventArgs e)
         {
@@ -124,11 +111,35 @@ namespace ServicesMuoqa.Views
             }
         }
         //Funciones sin eventos
+        private void GetAllServices()
+        {
+            try
+            {
+                DataTable data = _logic.GetAllServices();
+                LoadGrid(data);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void LoadGrid(DataTable data)
         {
             servicesData.DataSource = null;
             servicesData.DataSource = data;
             ElementProperties();
+        }
+        private void ElementProperties()
+        {
+            //serviceData
+            int sizeDataService = servicesData.Width;
+            int sizeColumn = sizeDataService / servicesData.Columns.Count;
+            for (int i = 0; i < servicesData.Columns.Count; i++)
+            {
+                servicesData.Columns[i].Width = sizeColumn;
+            }
+            servicesData.ReadOnly = true;
         }
         private ServicesPrices CheckEditingParameters()
         {
@@ -182,17 +193,6 @@ namespace ServicesMuoqa.Views
             priceTextAdd.Clear();
             nameTextAdd.Clear();
             idTextDelete.Clear();
-        }
-        private void ElementProperties()
-        {
-            //serviceData
-            int sizeDataService = servicesData.Width;
-            int sizeColumn = sizeDataService / servicesData.Columns.Count;
-            for (int i = 0; i < servicesData.Columns.Count; i++)
-            {
-                servicesData.Columns[i].Width = sizeColumn;
-            }
-            servicesData.ReadOnly = true;
         }
         private List<string> GetServices(string text)
         {
@@ -313,7 +313,7 @@ namespace ServicesMuoqa.Views
                 Log.Error(ex.Message);
                 Console.WriteLine(ex.Message);
                 MessageBox.Show(ex.ToString());
-                ChangeServices();
+                GetAllServices();
                 return string.Empty;
             }
         }
@@ -395,7 +395,7 @@ namespace ServicesMuoqa.Views
                 else if(string.IsNullOrEmpty(cmbTextSearch.Text) && e.KeyCode == Keys.Back)
                 {
                     cmbTextSearch.DroppedDown = false;
-                    ChangeServices();
+                    GetAllServices();
                 }
             }
             catch (Exception ex)
@@ -413,7 +413,7 @@ namespace ServicesMuoqa.Views
                 string character = e.KeyCode.ToString().ToLower();
                 char c;
                 bool flag = char.TryParse(character, out c);
-                if (checkKey && flag)//Comprueba si la tecla precionada no es una tecla no deseada, como controlo la tecla borrar
+                if (checkKey && flag)//Comprueba si la tecla precionada es una tecla no deseada, como controlo la tecla borrar
                 {                   
                     if (CheckChar(c))//Aca comprueba si la tecla esta dentro del "diccionario personalizado" de La funcion CheckChar.
                     {               //No se puede usar char.IsLetter por que solo sirve en la clase "KeyPresEventArgs"

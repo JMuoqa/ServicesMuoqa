@@ -10,12 +10,17 @@ namespace DataBaseServicesMuoqa
         {
         }
         public DbSet<ServicesPrices> ServicesPrices { get; set; }
+        public DbSet<RequestedJobs> RequestedJobs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ServicesPrices>((entity) =>
             {
                 entity.HasKey(u => u.ServiceId);
+            });
+            modelBuilder.Entity<RequestedJobs>((entity) =>
+            {
+                entity.HasKey(u => u.JobId);
             });
         }
     }

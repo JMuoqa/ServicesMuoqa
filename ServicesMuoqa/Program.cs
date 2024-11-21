@@ -49,9 +49,12 @@ namespace ServicesMuoqa
                 services.AddDbContext<Connection>(options =>
                 options.UseMySQL(connectionString2));
                 services.AddDbContext<Connection>();
-                services.AddTransient<ViewMain>();
+                services.AddTransient<StatisticsView>();
+                services.AddTransient<UploadJob>();
+                services.AddTransient<MainView>();
                 services.AddTransient<Inicio>();
                 services.AddScoped<AdministrationServcices>();
+                services.AddScoped<Jobs>();
             });
         }
     }

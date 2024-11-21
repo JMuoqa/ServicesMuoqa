@@ -2,7 +2,7 @@
 
 namespace ServicesMuoqa.Views
 {
-    partial class ViewMain
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.

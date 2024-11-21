@@ -1,5 +1,28 @@
 ﻿namespace ServicesMuoqa
 {
+    //Clase para cambiar de color el menustrip cuando este seleccionado
+    public class CustomRenderer : ToolStripProfessionalRenderer
+    {
+        protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
+        {
+            if (e.Item.Selected)
+            {
+                // Color de fondo cuando el item está seleccionado
+                e.Graphics.FillRectangle(new SolidBrush(Color.Transparent), e.Item.ContentRectangle);
+            }
+            else
+            {
+                // Color de fondo cuando el item no está seleccionado
+                e.Graphics.FillRectangle(new SolidBrush(Color.Transparent), e.Item.ContentRectangle);
+            }
+        }
+        
+        // Sobrescribe el renderizado del fondo de los submenús
+        protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
+        {
+            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(10, 16, 25)), e.AffectedBounds);
+        }
+    }
     partial class Inicio
     {
         /// <summary>
@@ -30,7 +53,10 @@
         {
             Container = new Panel();
             Menu = new MenuStrip();
+            Menu.Renderer = new CustomRenderer();
             informacionToolStripMenuItem = new ToolStripMenuItem();
+            trabajosToolStripMenuItem = new ToolStripMenuItem();
+            cargarToolStripMenuItem = new ToolStripMenuItem();
             Menu.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,7 +71,7 @@
             // Menu
             // 
             Menu.BackColor = Color.Transparent;
-            Menu.Items.AddRange(new ToolStripItem[] { informacionToolStripMenuItem });
+            Menu.Items.AddRange(new ToolStripItem[] { informacionToolStripMenuItem, trabajosToolStripMenuItem });
             Menu.Location = new Point(0, 0);
             Menu.Name = "Menu";
             Menu.Size = new Size(1263, 24);
@@ -54,11 +80,31 @@
             // 
             // informacionToolStripMenuItem
             // 
+            informacionToolStripMenuItem.BackColor = Color.FromArgb(10, 16, 25);
             informacionToolStripMenuItem.ForeColor = Color.White;
             informacionToolStripMenuItem.Name = "informacionToolStripMenuItem";
             informacionToolStripMenuItem.Size = new Size(89, 20);
             informacionToolStripMenuItem.Text = "ServiciosWeb";
             informacionToolStripMenuItem.Click += informacionToolStripMenuItem_Click;
+            // 
+            // trabajosToolStripMenuItem
+            // 
+            trabajosToolStripMenuItem.BackColor = Color.FromArgb(10, 16, 25);
+            trabajosToolStripMenuItem.BackgroundImageLayout = ImageLayout.None;
+            trabajosToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            trabajosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cargarToolStripMenuItem });
+            trabajosToolStripMenuItem.ForeColor = Color.White;
+            trabajosToolStripMenuItem.Name = "trabajosToolStripMenuItem";
+            trabajosToolStripMenuItem.Size = new Size(62, 20);
+            trabajosToolStripMenuItem.Text = "Trabajos";
+            // 
+            // cargarToolStripMenuItem
+            // 
+            cargarToolStripMenuItem.ForeColor = Color.White;
+            cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
+            cargarToolStripMenuItem.Size = new Size(180, 22);
+            cargarToolStripMenuItem.Text = "Cargar";
+            cargarToolStripMenuItem.Click += cargarToolStripMenuItem_Click;
             // 
             // Inicio
             // 
@@ -83,5 +129,7 @@
         private new Panel Container;
         private MenuStrip Menu;
         private ToolStripMenuItem informacionToolStripMenuItem;
+        private ToolStripMenuItem trabajosToolStripMenuItem;
+        private ToolStripMenuItem cargarToolStripMenuItem;
     }
 }

@@ -15,7 +15,7 @@ namespace BackendServicesMuoqa
             _conn = conn ?? throw new ArgumentNullException(nameof(conn));
         }
         //Obtener lista de servicios
-        public DataTable ChangeServices()
+        public DataTable GetAllServices()
         {
             try
             {
@@ -48,7 +48,7 @@ namespace BackendServicesMuoqa
                 int flag = _conn.SaveChanges();
                 if (flag > 0)
                 {
-                    DataTable data = ChangeServices();
+                    DataTable data = GetAllServices();
                     return data;
                 }
                 return new DataTable();
@@ -69,7 +69,7 @@ namespace BackendServicesMuoqa
                 int flag = _conn.SaveChanges();
                 if(flag > 0)
                 {
-                    DataTable data = ChangeServices();
+                    DataTable data = GetAllServices();
                     return data;
                 }
                 return new DataTable();
@@ -97,7 +97,7 @@ namespace BackendServicesMuoqa
                 int flag = _conn.SaveChanges();
                 if (flag > 0) 
                 {
-                    DataTable data = ChangeServices();
+                    DataTable data = GetAllServices();
                     return data;
                 }
                 return new DataTable();
