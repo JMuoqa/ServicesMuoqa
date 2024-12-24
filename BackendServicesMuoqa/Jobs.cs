@@ -48,5 +48,37 @@ namespace BackendServicesMuoqa
                 throw new Exception(ex.Message);
             }
         }
+        
+        public DataTable ModifyJob(RequestedJobs data)
+        {
+            try
+            {
+                var WorkToEdit = _conn.RequestedJobs.Find(data.JobId);
+                if (WorkToEdit != null)
+                {
+                    WorkToEdit.CustomerName = data.CustomerName;
+                    WorkToEdit.CustomerNumber = data.CustomerNumber;
+                    WorkToEdit.JobName = data.JobName;
+                    WorkToEdit.JobPrice = data.JobPrice;
+                    WorkToEdit.JobStatus = data.JobStatus;
+                    WorkToEdit.EntryDate = data.EntryDate;
+                    WorkToEdit.DeliveryDate = data.DeliveryDate;
+                }
+                else
+                    throw new Exception("El servicio no se encontro");
+                int flag = _conn.SaveChanges();
+                if (flag > 0)
+                    return GetAllJobs();
+                return new DataTable();
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

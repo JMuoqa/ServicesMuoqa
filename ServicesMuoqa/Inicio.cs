@@ -48,5 +48,27 @@ namespace ServicesMuoqa
         {
             CallView(typeof(UploadJob));
         }
+
+        private void ToolStripMenuItem_Paint(object sender, PaintEventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+
+            if (item.Selected)
+            {
+                // Color cuando se selecciona o pasa el ratón por encima
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(40, 46, 55)), e.ClipRectangle);
+                item.ForeColor = Color.White;
+            }
+            else
+            {
+                // Color normal
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(20, 26, 35)), e.ClipRectangle);
+                item.ForeColor = Color.White;
+            }
+
+            // Dibuja el texto del ToolStripMenuItem
+            TextRenderer.DrawText(e.Graphics, item.Text, item.Font, e.ClipRectangle, item.ForeColor);
+        }
+
     }
 }

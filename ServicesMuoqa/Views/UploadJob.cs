@@ -42,6 +42,24 @@ namespace ServicesMuoqa.Views
             }
         }
 
+
+        private void modifyJobButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RequestedJobs newJob = CheckWorkToModify();
+                DataTable data = _jobs.ModifyJob(newJob);
+                LoadGrid(data);
+                ClearTextBox();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         //Funciones sin eventos
         private void ClearTextBox()
         {
@@ -52,6 +70,14 @@ namespace ServicesMuoqa.Views
             jobStatusText.Clear();
             entryDateText.Clear();
             deliveryDateText.Clear();
+            jobIdTextModify.Clear();
+            jobNameTextModify.Clear();
+            jobPriceTextModify.Clear();
+            customerNameTextModify.Clear();
+            customerNumberTextModify.Clear();
+            jobStatusTextModify.Clear();
+            entryDateTextModify.Clear();
+            deliveryDateTextModify.Clear();
         }
         private void GetAllJobs()
         {
@@ -96,9 +122,64 @@ namespace ServicesMuoqa.Views
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
+
+        private RequestedJobs CheckWorkToModify()
+        {
+            try
+            {
+                int id;
+                if (!string.IsNullOrEmpty(jobIdTextModify.Text))
+                    id = int.Parse(jobIdTextModify.Text);
+                else
+                    throw new Exception("Necesitas un id para modificarlo");
+
+                int row = id - 1;
+                string customerName, customerNumber, jobName, jobPrice, jobStatus;
+                DateTime entry, delivery;
+
+
+
+                if (string.IsNullOrEmpty(customerNameTextModify.Text))
+                    customerName = jobData.Rows[row].Cells[1].Value.ToString() ?? "null";
+                else
+                    customerName = jobNameTextModify.Text;
+                if (string.IsNullOrEmpty(customerNumberTextModify.Text))
+                    customerNumber = jobData.Rows[row].Cells[2].Value.ToString() ?? "null";
+                else
+                    customerNumber = customerNumberTextModify.Text;
+                if (string.IsNullOrEmpty(jobNameTextModify.Text))
+                    jobName = jobData.Rows[row].Cells[3].Value.ToString() ?? "null";
+                else
+                    jobName = jobNameTextModify.Text;
+                if(string.IsNullOrEmpty(jobPriceTextModify.Text))
+                    jobPrice = jobData.Rows[row].Cells[4].Value.ToString() ?? "null";
+                else
+                    jobPrice = jobPriceTextModify.Text;
+                if(string.IsNullOrEmpty(jobStatusTextModify.Text))
+                    jobStatus = jobData.Rows[row].Cells[5].Value.ToString() ?? "null";
+                else 
+                    jobStatus = jobStatusTextModify.Text;
+
+                RequestedJobs data = new RequestedJobs
+                {
+                    JobId = id,
+                    CustomerName = customerName,
+                    CustomerNumber = customerNumber,
+                    JobName = jobName,
+                    JobPrice = jobPrice,
+                    JobStatus = jobStatus
+                };
+                return data;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        } 
         private RequestedJobs CheckNullOrEmpty()
         {
             try

@@ -1,28 +1,8 @@
-﻿namespace ServicesMuoqa
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace ServicesMuoqa
 {
-    //Clase para cambiar de color el menustrip cuando este seleccionado
-    public class CustomRenderer : ToolStripProfessionalRenderer
-    {
-        protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
-        {
-            if (e.Item.Selected)
-            {
-                // Color de fondo cuando el item está seleccionado
-                e.Graphics.FillRectangle(new SolidBrush(Color.Transparent), e.Item.ContentRectangle);
-            }
-            else
-            {
-                // Color de fondo cuando el item no está seleccionado
-                e.Graphics.FillRectangle(new SolidBrush(Color.Transparent), e.Item.ContentRectangle);
-            }
-        }
-        
-        // Sobrescribe el renderizado del fondo de los submenús
-        protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
-        {
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(10, 16, 25)), e.AffectedBounds);
-        }
-    }
+
     partial class Inicio
     {
         /// <summary>
@@ -53,7 +33,6 @@
         {
             Container = new Panel();
             Menu = new MenuStrip();
-            Menu.Renderer = new CustomRenderer();
             informacionToolStripMenuItem = new ToolStripMenuItem();
             trabajosToolStripMenuItem = new ToolStripMenuItem();
             cargarToolStripMenuItem = new ToolStripMenuItem();
@@ -70,41 +49,45 @@
             // 
             // Menu
             // 
-            Menu.BackColor = Color.Transparent;
+            Menu.BackColor = Color.FromArgb(20, 26, 35);
             Menu.Items.AddRange(new ToolStripItem[] { informacionToolStripMenuItem, trabajosToolStripMenuItem });
             Menu.Location = new Point(0, 0);
             Menu.Name = "Menu";
             Menu.Size = new Size(1263, 24);
             Menu.TabIndex = 1;
             Menu.Text = "menuStrip1";
+            Menu.ResumeLayout();
             // 
             // informacionToolStripMenuItem
             // 
-            informacionToolStripMenuItem.BackColor = Color.FromArgb(10, 16, 25);
+            informacionToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
             informacionToolStripMenuItem.ForeColor = Color.White;
             informacionToolStripMenuItem.Name = "informacionToolStripMenuItem";
             informacionToolStripMenuItem.Size = new Size(89, 20);
             informacionToolStripMenuItem.Text = "ServiciosWeb";
             informacionToolStripMenuItem.Click += informacionToolStripMenuItem_Click;
+            informacionToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
             // trabajosToolStripMenuItem
             // 
-            trabajosToolStripMenuItem.BackColor = Color.FromArgb(10, 16, 25);
-            trabajosToolStripMenuItem.BackgroundImageLayout = ImageLayout.None;
-            trabajosToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            trabajosToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
+            trabajosToolStripMenuItem.ForeColor = Color.White;
             trabajosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cargarToolStripMenuItem });
             trabajosToolStripMenuItem.ForeColor = Color.White;
             trabajosToolStripMenuItem.Name = "trabajosToolStripMenuItem";
             trabajosToolStripMenuItem.Size = new Size(62, 20);
             trabajosToolStripMenuItem.Text = "Trabajos";
+            trabajosToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
             // cargarToolStripMenuItem
             // 
+            cargarToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
             cargarToolStripMenuItem.ForeColor = Color.White;
             cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
             cargarToolStripMenuItem.Size = new Size(180, 22);
-            cargarToolStripMenuItem.Text = "Cargar";
+            cargarToolStripMenuItem.Text = "Cargar y Modificar";
             cargarToolStripMenuItem.Click += cargarToolStripMenuItem_Click;
+            cargarToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
             // Inicio
             // 

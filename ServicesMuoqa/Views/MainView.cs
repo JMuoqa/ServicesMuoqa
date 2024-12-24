@@ -147,13 +147,9 @@ namespace ServicesMuoqa.Views
             {
                 int id;
                 if (!string.IsNullOrEmpty(idTextEdit.Text))
-                {
                     id = int.Parse(idTextEdit.Text);
-                }
                 else
-                {
                     throw new Exception("Necesitas poner un id");
-                }
                 int row = id - 1;
                 string name;
                 string price;
