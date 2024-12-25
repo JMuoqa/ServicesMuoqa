@@ -141,11 +141,10 @@ namespace ServicesMuoqa.Views
                 DateTime entry, delivery;
 
 
-
                 if (string.IsNullOrEmpty(customerNameTextModify.Text))
                     customerName = jobData.Rows[row].Cells[1].Value.ToString() ?? "null";
                 else
-                    customerName = jobNameTextModify.Text;
+                    customerName = customerNameTextModify.Text;
                 if (string.IsNullOrEmpty(customerNumberTextModify.Text))
                     customerNumber = jobData.Rows[row].Cells[2].Value.ToString() ?? "null";
                 else
@@ -162,6 +161,21 @@ namespace ServicesMuoqa.Views
                     jobStatus = jobData.Rows[row].Cells[5].Value.ToString() ?? "null";
                 else 
                     jobStatus = jobStatusTextModify.Text;
+                if (string.IsNullOrEmpty(entryDateTextModify.Text))
+                {
+                    string date = jobData.Rows[row].Cells[6].Value.ToString() ?? "null";
+                    entry = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                else
+                    entry = DateTime.ParseExact(entryDateTextModify.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                if (string.IsNullOrEmpty(deliveryDateTextModify.Text))
+                {
+                    string date = jobData.Rows[row].Cells[7].Value.ToString() ?? "null";
+                    delivery = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                else
+                    delivery = DateTime.ParseExact(deliveryDateTextModify.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
 
                 RequestedJobs data = new RequestedJobs
                 {
@@ -170,7 +184,9 @@ namespace ServicesMuoqa.Views
                     CustomerNumber = customerNumber,
                     JobName = jobName,
                     JobPrice = jobPrice,
-                    JobStatus = jobStatus
+                    JobStatus = jobStatus,
+                    EntryDate = entry,
+                    DeliveryDate = delivery
                 };
                 return data;
 
