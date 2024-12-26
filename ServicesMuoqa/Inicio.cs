@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using ServicesMuoqa.Views;
-
+using System.Windows.Forms.DataVisualization.Charting;
 namespace ServicesMuoqa
 {
     public partial class Inicio : Form
@@ -48,7 +48,6 @@ namespace ServicesMuoqa
         {
             CallView(typeof(UploadJob));
         }
-
         private void ToolStripMenuItem_Paint(object sender, PaintEventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
@@ -69,6 +68,9 @@ namespace ServicesMuoqa
             // Dibuja el texto del ToolStripMenuItem
             TextRenderer.DrawText(e.Graphics, item.Text, item.Font, e.ClipRectangle, item.ForeColor);
         }
-
+        private void estadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CallView(typeof(StatisticsView));
+        }
     }
 }

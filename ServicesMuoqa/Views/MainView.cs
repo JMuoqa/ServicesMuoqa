@@ -326,8 +326,8 @@ namespace ServicesMuoqa.Views
         {
             if (string.IsNullOrEmpty(priceTextAdd.Text))
             {
-                if (char.IsLetter(e.KeyChar))
-                    e.Handled = true;
+                //if (char.IsLetter(e.KeyChar))
+                //    e.Handled = true;
                 priceTextAdd.Text = "$";
                 char press = e.KeyChar;
                 e.Handled = true;
@@ -335,7 +335,7 @@ namespace ServicesMuoqa.Views
                     priceTextAdd.Text += press;
                 priceTextAdd.SelectionStart = priceTextAdd.Text.Length;
             }
-            if (char.IsLetter(e.KeyChar) && priceTextAdd.Text.Length == 1)
+            if ((char.IsLetter(e.KeyChar)||char.IsSymbol(e.KeyChar)) && priceTextAdd.Text.Length == 1)
             {
                 e.Handled = true;
             }

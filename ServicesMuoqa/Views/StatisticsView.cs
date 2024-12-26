@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ServicesMuoqa.Views
 {
@@ -15,6 +16,7 @@ namespace ServicesMuoqa.Views
         public StatisticsView()
         {
             InitializeComponent();
+            
         }
     }
 }

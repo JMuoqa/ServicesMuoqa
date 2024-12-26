@@ -51,6 +51,7 @@ namespace ServicesMuoqa.Views
             customerName = new Label();
             modifyJobButton = new Button();
             jobModifyGroup = new GroupBox();
+            instruction = new Label();
             jobIdTextModify = new TextBox();
             label8 = new Label();
             deliveryDateTextModify = new TextBox();
@@ -67,15 +68,13 @@ namespace ServicesMuoqa.Views
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            instruction = new Label();
             ((System.ComponentModel.ISupportInitialize)jobData).BeginInit();
             jobAddGroup.SuspendLayout();
             jobModifyGroup.SuspendLayout();
             SuspendLayout();
             // 
             // jobData
-            //
-            
+            // 
             jobData.AllowUserToAddRows = false;
             jobData.AllowUserToResizeRows = false;
             jobData.BackgroundColor = Color.FromArgb(10, 16, 25);
@@ -104,7 +103,6 @@ namespace ServicesMuoqa.Views
             jobData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             jobData.Size = new Size(1215, 195);
             jobData.TabIndex = 4;
-
             // 
             // jobAddGroup
             // 
@@ -171,6 +169,7 @@ namespace ServicesMuoqa.Views
             jobPriceText.Name = "jobPriceText";
             jobPriceText.Size = new Size(130, 23);
             jobPriceText.TabIndex = 11;
+            jobPriceText.KeyPress += PriceTextBox_KeyPress;
             // 
             // jobNameText
             // 
@@ -297,6 +296,15 @@ namespace ServicesMuoqa.Views
             jobModifyGroup.TabStop = false;
             jobModifyGroup.Text = "Modificar";
             // 
+            // instruction
+            // 
+            instruction.AutoSize = true;
+            instruction.Location = new Point(599, 111);
+            instruction.Name = "instruction";
+            instruction.Size = new Size(217, 15);
+            instruction.TabIndex = 20;
+            instruction.Text = "El unico parametro obligatorio es el \"Id\"";
+            // 
             // jobIdTextModify
             // 
             jobIdTextModify.Location = new Point(6, 46);
@@ -309,9 +317,9 @@ namespace ServicesMuoqa.Views
             label8.AutoSize = true;
             label8.Location = new Point(6, 19);
             label8.Name = "label8";
-            label8.Size = new Size(77, 15);
+            label8.Size = new Size(85, 15);
             label8.TabIndex = 18;
-            label8.Text = "Id del Trabajo";
+            label8.Text = "Id del Trabajo *";
             // 
             // deliveryDateTextModify
             // 
@@ -340,6 +348,7 @@ namespace ServicesMuoqa.Views
             jobPriceTextModify.Name = "jobPriceTextModify";
             jobPriceTextModify.Size = new Size(130, 23);
             jobPriceTextModify.TabIndex = 11;
+            jobPriceTextModify.KeyPress += PriceTextBox_KeyPress;
             // 
             // jobNameTextModify
             // 
@@ -424,15 +433,6 @@ namespace ServicesMuoqa.Views
             label7.Size = new Size(110, 15);
             label7.TabIndex = 0;
             label7.Text = "Nombre del Cliente";
-            // 
-            // instruction
-            // 
-            instruction.AutoSize = true;
-            instruction.Location = new Point(599, 111);
-            instruction.Name = "instruction";
-            instruction.Size = new Size(217, 15);
-            instruction.TabIndex = 20;
-            instruction.Text = "El unico parametro obligatorio es el \"Id\"";
             // 
             // UploadJob
             // 

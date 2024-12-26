@@ -1,4 +1,6 @@
-﻿namespace ServicesMuoqa.Views
+﻿using System.Windows.Forms.DataVisualization.Charting;
+
+namespace ServicesMuoqa.Views
 {
     partial class StatisticsView
     {
@@ -43,5 +45,6 @@
         }
 
         #endregion
+
     }
 }

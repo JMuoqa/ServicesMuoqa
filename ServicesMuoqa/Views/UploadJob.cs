@@ -153,13 +153,13 @@ namespace ServicesMuoqa.Views
                     jobName = jobData.Rows[row].Cells[3].Value.ToString() ?? "null";
                 else
                     jobName = jobNameTextModify.Text;
-                if(string.IsNullOrEmpty(jobPriceTextModify.Text))
+                if (string.IsNullOrEmpty(jobPriceTextModify.Text))
                     jobPrice = jobData.Rows[row].Cells[4].Value.ToString() ?? "null";
                 else
                     jobPrice = jobPriceTextModify.Text;
-                if(string.IsNullOrEmpty(jobStatusTextModify.Text))
+                if (string.IsNullOrEmpty(jobStatusTextModify.Text))
                     jobStatus = jobData.Rows[row].Cells[5].Value.ToString() ?? "null";
-                else 
+                else
                     jobStatus = jobStatusTextModify.Text;
                 if (string.IsNullOrEmpty(entryDateTextModify.Text))
                 {
@@ -195,7 +195,7 @@ namespace ServicesMuoqa.Views
             {
                 throw new Exception(ex.Message);
             }
-        } 
+        }
         private RequestedJobs CheckNullOrEmpty()
         {
             try
@@ -245,5 +245,27 @@ namespace ServicesMuoqa.Views
                 throw new Exception(ex.Message);
             }
         }
+
+        //Funciones de los textbox
+        private void PriceTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = sender as TextBox ?? new TextBox();
+            if (string.IsNullOrEmpty(textBox.Text)) 
+            {
+                textBox.Text = "$";
+                char press = e.KeyChar;
+                e.Handled = true;
+                if(press != '$' && char.IsNumber(press))
+                    textBox.Text += press;
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+            if ((char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar)) && textBox.Text.Length == 1)
+            {
+                e.Handled = true;
+            }
+        }
+
+
+
     }
 }

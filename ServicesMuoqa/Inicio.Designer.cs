@@ -36,6 +36,7 @@ namespace ServicesMuoqa
             informacionToolStripMenuItem = new ToolStripMenuItem();
             trabajosToolStripMenuItem = new ToolStripMenuItem();
             cargarToolStripMenuItem = new ToolStripMenuItem();
+            estadisticasToolStripMenuItem = new ToolStripMenuItem();
             Menu.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,13 +51,12 @@ namespace ServicesMuoqa
             // Menu
             // 
             Menu.BackColor = Color.FromArgb(20, 26, 35);
-            Menu.Items.AddRange(new ToolStripItem[] { informacionToolStripMenuItem, trabajosToolStripMenuItem });
+            Menu.Items.AddRange(new ToolStripItem[] { informacionToolStripMenuItem, trabajosToolStripMenuItem, estadisticasToolStripMenuItem });
             Menu.Location = new Point(0, 0);
             Menu.Name = "Menu";
             Menu.Size = new Size(1263, 24);
             Menu.TabIndex = 1;
             Menu.Text = "menuStrip1";
-            Menu.ResumeLayout();
             // 
             // informacionToolStripMenuItem
             // 
@@ -71,7 +71,6 @@ namespace ServicesMuoqa
             // trabajosToolStripMenuItem
             // 
             trabajosToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
-            trabajosToolStripMenuItem.ForeColor = Color.White;
             trabajosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cargarToolStripMenuItem });
             trabajosToolStripMenuItem.ForeColor = Color.White;
             trabajosToolStripMenuItem.Name = "trabajosToolStripMenuItem";
@@ -84,10 +83,20 @@ namespace ServicesMuoqa
             cargarToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
             cargarToolStripMenuItem.ForeColor = Color.White;
             cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
-            cargarToolStripMenuItem.Size = new Size(180, 22);
+            cargarToolStripMenuItem.Size = new Size(172, 22);
             cargarToolStripMenuItem.Text = "Cargar y Modificar";
             cargarToolStripMenuItem.Click += cargarToolStripMenuItem_Click;
             cargarToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
+            // 
+            // estadisticasToolStripMenuItem
+            // 
+            estadisticasToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
+            estadisticasToolStripMenuItem.ForeColor = Color.White;
+            estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
+            estadisticasToolStripMenuItem.Size = new Size(79, 20);
+            estadisticasToolStripMenuItem.Text = "Estadisticas";
+            estadisticasToolStripMenuItem.Click += estadisticasToolStripMenuItem_Click;
+            estadisticasToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
             // Inicio
             // 
@@ -114,5 +123,6 @@ namespace ServicesMuoqa
         private ToolStripMenuItem informacionToolStripMenuItem;
         private ToolStripMenuItem trabajosToolStripMenuItem;
         private ToolStripMenuItem cargarToolStripMenuItem;
+        private ToolStripMenuItem estadisticasToolStripMenuItem;
     }
 }
