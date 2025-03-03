@@ -31,6 +31,7 @@ namespace ServicesMuoqa
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             Container = new Panel();
             Menu = new MenuStrip();
             informacionToolStripMenuItem = new ToolStripMenuItem();
@@ -74,7 +75,7 @@ namespace ServicesMuoqa
             trabajosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cargarToolStripMenuItem });
             trabajosToolStripMenuItem.ForeColor = Color.White;
             trabajosToolStripMenuItem.Name = "trabajosToolStripMenuItem";
-            trabajosToolStripMenuItem.Size = new Size(62, 20);
+            trabajosToolStripMenuItem.Size = new Size(63, 20);
             trabajosToolStripMenuItem.Text = "Trabajos";
             trabajosToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
@@ -107,6 +108,7 @@ namespace ServicesMuoqa
             Controls.Add(Container);
             Controls.Add(Menu);
             ForeColor = Color.White;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = Menu;
             Name = "Inicio";
             Text = "Inicio";

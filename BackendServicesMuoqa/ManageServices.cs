@@ -7,10 +7,10 @@ using System.Data;
 
 namespace BackendServicesMuoqa
 {
-    public class AdministrationServcices : CommonFunctionPer
+    public class ManageServices : CommonFunctionPer
     {
         private readonly Connection _conn;
-        public AdministrationServcices(Connection conn)
+        public ManageServices(Connection conn)
         {
             _conn = conn ?? throw new ArgumentNullException(nameof(conn));
         }

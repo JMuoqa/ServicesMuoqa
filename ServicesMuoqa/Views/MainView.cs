@@ -18,8 +18,8 @@ namespace ServicesMuoqa.Views
 {
     public partial class MainView : Form
     {
-        private readonly AdministrationServcices _logic;
-        public MainView(AdministrationServcices logic)
+        private readonly ManageServices _logic;
+        public MainView(ManageServices logic)
         {
             _logic = logic ?? throw new ArgumentNullException(nameof(logic));
             InitializeComponent();
@@ -116,6 +116,7 @@ namespace ServicesMuoqa.Views
             try
             {
                 DataTable data = _logic.GetAllServices();
+                ClearTexts();
                 LoadGrid(data);
             }
             catch (Exception ex)
@@ -145,6 +146,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
+                GetAllServices();
                 int id;
                 if (!string.IsNullOrEmpty(idTextEdit.Text))
                     id = int.Parse(idTextEdit.Text);
@@ -153,7 +155,6 @@ namespace ServicesMuoqa.Views
                 int row = id - 1;
                 string name;
                 string price;
-
                 if (string.IsNullOrEmpty(nameTextEdit.Text))
                     name = servicesData.Rows[row].Cells[1].Value.ToString() ?? "null";
                 else
@@ -221,6 +222,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
+                GetAllServices();
                 if ((!string.IsNullOrEmpty(nameTextAdd.Text)) && (!string.IsNullOrEmpty(priceTextAdd.Text)))
                 {
                     ServicesPrices data = new ServicesPrices
@@ -380,11 +382,6 @@ namespace ServicesMuoqa.Views
                     list = GetServices(text);
                     if (cmbTextSearch.Items.Count>0)
                         cmbTextSearch.Items.Clear();
-                    cmbTextSearch.Items.Add(text);
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        cmbTextSearch.Items.Add(list[i]);
-                    }
                     cmbTextSearch.SelectionStart = cmbTextSearch.Text.Length;
                     cmbTextSearch.DroppedDown = true;
                 }
@@ -442,7 +439,8 @@ namespace ServicesMuoqa.Views
                 }
                 else
                 {
-                    cmbTextSearch.SelectionStart = cmbTextSearch.Text.Length;
+                    if(cmbTextSearch.Text.Length > 0)
+                        cmbTextSearch.SelectionStart = cmbTextSearch.Text.Length;
                 }
             }
             catch (Exception ex)

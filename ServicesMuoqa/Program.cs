@@ -53,7 +53,7 @@ namespace ServicesMuoqa
                 services.AddTransient<UploadJob>();
                 services.AddTransient<MainView>();
                 services.AddTransient<Inicio>();
-                services.AddScoped<AdministrationServcices>();
+                services.AddScoped<ManageServices>();
                 services.AddScoped<Jobs>();
             });
         }
