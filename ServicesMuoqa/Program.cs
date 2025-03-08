@@ -62,7 +62,7 @@ namespace ServicesMuoqa
         static void UpdateVersion(string executablePath)
         {
             string command = $"curl -o {executablePath}\\AppMuoqa.zip https://muoqa.com/UpdateVersion/AppEjemplo.zip";
-            string commandTwo = $"powershell -command \"Expand-Archive -Path '{executablePath}\\AppMuoqa.zip' -DestinationPath 'C:\\Users\\Joaquin\\Desktop\\CarpetaDescomprimida\\' -Force \"";
+            string commandTwo = $"powershell -command \"Expand-Archive -Path '{executablePath}\\AppMuoqa.zip' -DestinationPath '{executablePath}' -Force \"";
 
             try
             {
