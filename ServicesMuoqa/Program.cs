@@ -63,7 +63,6 @@ namespace ServicesMuoqa
         {
             string command = $"curl -o {executablePath}\\AppMuoqa.zip https://muoqa.com/UpdateVersion/AppEjemplo.zip";
             string commandTwo = $"powershell -command \"Expand-Archive -Path '{executablePath}\\AppMuoqa.zip' -DestinationPath '{executablePath}' -Force \"";
-
             try
             {
                 ProcessStartInfo psi = new ProcessStartInfo

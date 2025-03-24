@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ServicesMuoqa.Views
 {
@@ -24,7 +26,6 @@ namespace ServicesMuoqa.Views
             InitializeComponent();
             GetAllJobs();
         }
-
         private void addJobButton_Click(object sender, EventArgs e)
         {
             try
@@ -41,8 +42,6 @@ namespace ServicesMuoqa.Views
                 MessageBox.Show(ex.Message);
             }
         }
-
-
         private void modifyJobButton_Click(object sender, EventArgs e)
         {
             try
@@ -59,7 +58,6 @@ namespace ServicesMuoqa.Views
                 MessageBox.Show(ex.Message);
             }
         }
-
         //Funciones sin eventos
         private void ClearTextBox()
         {
@@ -68,14 +66,14 @@ namespace ServicesMuoqa.Views
             jobNameText.Clear();
             jobPriceText.Clear();
             jobStatusText.Clear();
-            entryDateText.Clear();
+            entryDateText.SelectedIndex = 0;
             deliveryDateText.Clear();
             jobIdTextModify.Clear();
             jobNameTextModify.Clear();
             jobPriceTextModify.Clear();
             customerNameTextModify.Clear();
             customerNumberTextModify.Clear();
-            jobStatusTextModify.Clear();
+            jobStatusTextModify.SelectedIndex = 0;
             entryDateTextModify.Clear();
             deliveryDateTextModify.Clear();
         }
@@ -125,7 +123,6 @@ namespace ServicesMuoqa.Views
                 throw new Exception(ex.Message);
             }
         }
-
         private RequestedJobs CheckWorkToModify()
         {
             try
@@ -135,12 +132,9 @@ namespace ServicesMuoqa.Views
                     id = int.Parse(jobIdTextModify.Text);
                 else
                     throw new Exception("Necesitas un id para modificarlo");
-
                 int row = id - 1;
                 string customerName, customerNumber, jobName, jobPrice, jobStatus;
                 DateTime entry, delivery;
-
-
                 if (string.IsNullOrEmpty(customerNameTextModify.Text))
                     customerName = jobData.Rows[row].Cells[1].Value.ToString() ?? "null";
                 else
@@ -164,19 +158,29 @@ namespace ServicesMuoqa.Views
                 if (string.IsNullOrEmpty(entryDateTextModify.Text))
                 {
                     string date = jobData.Rows[row].Cells[6].Value.ToString() ?? "null";
-                    entry = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    string date2 = date.Replace("/", "-") ?? date;// es necesario convertilos a guiones para que permita la conversion a datetime
+                    date2 = AdaptTextToDate(date2);
+                    entry = DateTime.ParseExact(date2, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    entry = entry.Date;
                 }
                 else
-                    entry = DateTime.ParseExact(entryDateTextModify.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                {
+                    string date2 = entryDateTextModify.Text.Replace("/", "-") ?? entryDateTextModify.Text;
+                    entry = DateTime.ParseExact(date2, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
                 if (string.IsNullOrEmpty(deliveryDateTextModify.Text))
                 {
                     string date = jobData.Rows[row].Cells[7].Value.ToString() ?? "null";
-                    delivery = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    string date2 = date.Replace("/", "-");
+                    date2 = AdaptTextToDate(date2);
+                    delivery = DateTime.ParseExact(date2, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    delivery = delivery.Date;    
                 }
                 else
-                    delivery = DateTime.ParseExact(deliveryDateTextModify.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
-
+                {
+                    string date2 = deliveryDateTextModify.Text.Replace("/", "-") ?? deliveryDateTextModify.Text;
+                    delivery = DateTime.ParseExact(date2, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
                 RequestedJobs data = new RequestedJobs
                 {
                     JobId = id,
@@ -196,12 +200,47 @@ namespace ServicesMuoqa.Views
                 throw new Exception(ex.Message);
             }
         }
+        //Sirve para colocar un 0 antes del dia.
+        //Si es 2-11-2024 no lo acepta como datetime entonces 
+        //se convirte a 02-11-2024 
+        private string AdaptTextToDate(string date2)
+        {
+            try
+            {
+                string[] date3 = date2.Split('-');
+                if(date3[1].Length == 1)
+                {
+                    string aux = date3[1];
+                    date3[1] = "0";
+                    date3[1] += aux;
+
+                }
+                if (date3[0].Length == 1)
+                {
+                    string aux = date3[0];
+                    date3[0] = "0";
+                    date3[0] += aux;
+                    date2 = "";
+                    foreach (string part in date3)
+                    {
+                        if(part.Length < 4)
+                            date2 += part + "-";
+                        else
+                            date2 += part;
+                    }
+                }
+                return date2;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         private RequestedJobs CheckNullOrEmpty()
         {
             try
             {
                 DateTime entryDate, deliveryDate;
-
                 if (string.IsNullOrEmpty(customerNameText.Text))
                     throw new Exception("El nombre del cliente no puede estar vacio");
                 if (string.IsNullOrEmpty(customerNumberText.Text))
@@ -215,17 +254,27 @@ namespace ServicesMuoqa.Views
                 if (string.IsNullOrEmpty(entryDateText.Text))
                 {
                     entryDate = DateTime.Now;
+                    entryDate = entryDate.Date;
                 }
                 else
                 {
+                    string date = entryDateText.Text;
+                    date = date.Replace("/", "-");
+                    date = AdaptTextToDate(date);
                     //Para convertir el DateTime en el formato esperado
-                    entryDate = DateTime.ParseExact(entryDateText.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    entryDate = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 }
                 if (string.IsNullOrEmpty(deliveryDateText.Text))
+                {
                     throw new Exception("La fecha de entrega no puede estar vacia");
-
-                deliveryDate = DateTime.ParseExact(deliveryDateText.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
+                }
+                else
+                {
+                    string date = deliveryDateText.Text;
+                    date = date.Replace("/", "-");
+                    date = AdaptTextToDate(date);
+                    deliveryDate = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
                 return new RequestedJobs
                 {
                     CustomerName = customerNameText.Text,
@@ -236,7 +285,6 @@ namespace ServicesMuoqa.Views
                     EntryDate = entryDate,
                     DeliveryDate = deliveryDate
                 };
-
             }
             catch (Exception ex)
             {
@@ -245,7 +293,6 @@ namespace ServicesMuoqa.Views
                 throw new Exception(ex.Message);
             }
         }
-
         //Funciones de los textbox
         private void PriceTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -264,8 +311,5 @@ namespace ServicesMuoqa.Views
                 e.Handled = true;
             }
         }
-
-
-
     }
 }

@@ -30,13 +30,12 @@ namespace ServicesMuoqa.Views
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             jobData = new DataGridView();
             jobAddGroup = new GroupBox();
             addJobButton = new Button();
             deliveryDateText = new TextBox();
-            entryDateText = new TextBox();
             jobStatusText = new TextBox();
             jobPriceText = new TextBox();
             jobNameText = new TextBox();
@@ -51,12 +50,12 @@ namespace ServicesMuoqa.Views
             customerName = new Label();
             modifyJobButton = new Button();
             jobModifyGroup = new GroupBox();
+            jobStatusTextModify = new ComboBox();
             instruction = new Label();
             jobIdTextModify = new TextBox();
             label8 = new Label();
             deliveryDateTextModify = new TextBox();
             entryDateTextModify = new TextBox();
-            jobStatusTextModify = new TextBox();
             jobPriceTextModify = new TextBox();
             jobNameTextModify = new TextBox();
             customerNumberTextModify = new TextBox();
@@ -68,6 +67,7 @@ namespace ServicesMuoqa.Views
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
+            entryDateText = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)jobData).BeginInit();
             jobAddGroup.SuspendLayout();
             jobModifyGroup.SuspendLayout();
@@ -79,21 +79,21 @@ namespace ServicesMuoqa.Views
             jobData.AllowUserToResizeRows = false;
             jobData.BackgroundColor = Color.FromArgb(10, 16, 25);
             jobData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(200, 200, 200);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(100, 100, 100);
-            jobData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(200, 200, 200);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(100, 100, 100);
+            jobData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             jobData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(250, 250, 250);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            jobData.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(250, 250, 250);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            jobData.DefaultCellStyle = dataGridViewCellStyle4;
             jobData.EnableHeadersVisualStyles = false;
             jobData.GridColor = Color.FromArgb(100, 100, 100);
             jobData.Location = new Point(12, 12);
@@ -106,9 +106,9 @@ namespace ServicesMuoqa.Views
             // 
             // jobAddGroup
             // 
+            jobAddGroup.Controls.Add(entryDateText);
             jobAddGroup.Controls.Add(addJobButton);
             jobAddGroup.Controls.Add(deliveryDateText);
-            jobAddGroup.Controls.Add(entryDateText);
             jobAddGroup.Controls.Add(jobStatusText);
             jobAddGroup.Controls.Add(jobPriceText);
             jobAddGroup.Controls.Add(jobNameText);
@@ -148,13 +148,6 @@ namespace ServicesMuoqa.Views
             deliveryDateText.Name = "deliveryDateText";
             deliveryDateText.Size = new Size(130, 23);
             deliveryDateText.TabIndex = 15;
-            // 
-            // entryDateText
-            // 
-            entryDateText.Location = new Point(686, 46);
-            entryDateText.Name = "entryDateText";
-            entryDateText.Size = new Size(130, 23);
-            entryDateText.TabIndex = 14;
             // 
             // jobStatusText
             // 
@@ -215,7 +208,7 @@ namespace ServicesMuoqa.Views
             jobStatus.AutoSize = true;
             jobStatus.Location = new Point(550, 19);
             jobStatus.Name = "jobStatus";
-            jobStatus.Size = new Size(102, 15);
+            jobStatus.Size = new Size(103, 15);
             jobStatus.TabIndex = 4;
             jobStatus.Text = "Estado del Trabajo";
             // 
@@ -224,7 +217,7 @@ namespace ServicesMuoqa.Views
             jobPrice.AutoSize = true;
             jobPrice.Location = new Point(414, 19);
             jobPrice.Name = "jobPrice";
-            jobPrice.Size = new Size(100, 15);
+            jobPrice.Size = new Size(101, 15);
             jobPrice.TabIndex = 3;
             jobPrice.Text = "Precio del Trabajo";
             // 
@@ -233,7 +226,7 @@ namespace ServicesMuoqa.Views
             jobName.AutoSize = true;
             jobName.Location = new Point(278, 19);
             jobName.Name = "jobName";
-            jobName.Size = new Size(111, 15);
+            jobName.Size = new Size(112, 15);
             jobName.TabIndex = 2;
             jobName.Text = "Nombre del Trabajo";
             // 
@@ -270,13 +263,13 @@ namespace ServicesMuoqa.Views
             // 
             // jobModifyGroup
             // 
+            jobModifyGroup.Controls.Add(jobStatusTextModify);
             jobModifyGroup.Controls.Add(instruction);
             jobModifyGroup.Controls.Add(jobIdTextModify);
             jobModifyGroup.Controls.Add(label8);
             jobModifyGroup.Controls.Add(deliveryDateTextModify);
             jobModifyGroup.Controls.Add(modifyJobButton);
             jobModifyGroup.Controls.Add(entryDateTextModify);
-            jobModifyGroup.Controls.Add(jobStatusTextModify);
             jobModifyGroup.Controls.Add(jobPriceTextModify);
             jobModifyGroup.Controls.Add(jobNameTextModify);
             jobModifyGroup.Controls.Add(customerNumberTextModify);
@@ -295,6 +288,15 @@ namespace ServicesMuoqa.Views
             jobModifyGroup.TabIndex = 18;
             jobModifyGroup.TabStop = false;
             jobModifyGroup.Text = "Modificar";
+            // 
+            // jobStatusTextModify
+            // 
+            jobStatusTextModify.FormattingEnabled = true;
+            jobStatusTextModify.Items.AddRange(new object[] { "", "Presupuestar", "Confirmados", "Esperando Corf", "Sin reparación", "Reparado" });
+            jobStatusTextModify.Location = new Point(686, 46);
+            jobStatusTextModify.Name = "jobStatusTextModify";
+            jobStatusTextModify.Size = new Size(130, 23);
+            jobStatusTextModify.TabIndex = 21;
             // 
             // instruction
             // 
@@ -317,7 +319,7 @@ namespace ServicesMuoqa.Views
             label8.AutoSize = true;
             label8.Location = new Point(6, 19);
             label8.Name = "label8";
-            label8.Size = new Size(85, 15);
+            label8.Size = new Size(86, 15);
             label8.TabIndex = 18;
             label8.Text = "Id del Trabajo *";
             // 
@@ -334,13 +336,6 @@ namespace ServicesMuoqa.Views
             entryDateTextModify.Name = "entryDateTextModify";
             entryDateTextModify.Size = new Size(130, 23);
             entryDateTextModify.TabIndex = 14;
-            // 
-            // jobStatusTextModify
-            // 
-            jobStatusTextModify.Location = new Point(686, 46);
-            jobStatusTextModify.Name = "jobStatusTextModify";
-            jobStatusTextModify.Size = new Size(130, 23);
-            jobStatusTextModify.TabIndex = 12;
             // 
             // jobPriceTextModify
             // 
@@ -394,7 +389,7 @@ namespace ServicesMuoqa.Views
             label3.AutoSize = true;
             label3.Location = new Point(686, 19);
             label3.Name = "label3";
-            label3.Size = new Size(102, 15);
+            label3.Size = new Size(103, 15);
             label3.TabIndex = 4;
             label3.Text = "Estado del Trabajo";
             // 
@@ -403,7 +398,7 @@ namespace ServicesMuoqa.Views
             label4.AutoSize = true;
             label4.Location = new Point(550, 19);
             label4.Name = "label4";
-            label4.Size = new Size(100, 15);
+            label4.Size = new Size(101, 15);
             label4.TabIndex = 3;
             label4.Text = "Precio del Trabajo";
             // 
@@ -412,7 +407,7 @@ namespace ServicesMuoqa.Views
             label5.AutoSize = true;
             label5.Location = new Point(414, 19);
             label5.Name = "label5";
-            label5.Size = new Size(111, 15);
+            label5.Size = new Size(112, 15);
             label5.TabIndex = 2;
             label5.Text = "Nombre del Trabajo";
             // 
@@ -433,6 +428,15 @@ namespace ServicesMuoqa.Views
             label7.Size = new Size(110, 15);
             label7.TabIndex = 0;
             label7.Text = "Nombre del Cliente";
+            // 
+            // entryDateText
+            // 
+            entryDateText.FormattingEnabled = true;
+            entryDateText.Items.AddRange(new object[] { "", "Presupuestar", "Confirmados", "Esperando Corf", "Sin reparación", "Reparado" });
+            entryDateText.Location = new Point(686, 46);
+            entryDateText.Name = "entryDateText";
+            entryDateText.Size = new Size(130, 23);
+            entryDateText.TabIndex = 17;
             // 
             // UploadJob
             // 
@@ -464,7 +468,6 @@ namespace ServicesMuoqa.Views
         private Label jobName;
         private Label jobStatus;
         private TextBox deliveryDateText;
-        private TextBox entryDateText;
         private TextBox jobStatusText;
         private TextBox jobPriceText;
         private TextBox jobNameText;
@@ -477,7 +480,6 @@ namespace ServicesMuoqa.Views
         private GroupBox jobModifyGroup;
         private TextBox deliveryDateTextModify;
         private TextBox entryDateTextModify;
-        private TextBox jobStatusTextModify;
         private TextBox jobPriceTextModify;
         private TextBox jobNameTextModify;
         private TextBox customerNumberTextModify;
@@ -492,5 +494,7 @@ namespace ServicesMuoqa.Views
         private TextBox jobIdTextModify;
         private Label label8;
         private Label instruction;
+        private ComboBox jobStatusTextModify;
+        private ComboBox entryDateText;
     }
 }
