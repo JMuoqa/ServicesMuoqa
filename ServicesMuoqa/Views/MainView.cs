@@ -23,7 +23,7 @@ namespace ServicesMuoqa.Views
         {
             _logic = logic ?? throw new ArgumentNullException(nameof(logic));
             InitializeComponent();
-            GetAllServices();
+            GetAllServices(true);
             ElementProperties();
         }
         private void editButton_Click(object sender, EventArgs e)
@@ -111,12 +111,13 @@ namespace ServicesMuoqa.Views
             }
         }
         //Funciones sin eventos
-        private void GetAllServices()
+        private void GetAllServices(bool texts)
         {
             try
             {
                 DataTable data = _logic.GetAllServices();
-                ClearTexts();
+                if(texts)
+                    ClearTexts();
                 LoadGrid(data);
             }
             catch (Exception ex)
@@ -146,7 +147,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
-                GetAllServices();
+                GetAllServices(false);
                 int id;
                 if (!string.IsNullOrEmpty(idTextEdit.Text))
                     id = int.Parse(idTextEdit.Text);
@@ -172,6 +173,7 @@ namespace ServicesMuoqa.Views
                     ServiceName = name,
                     ServicePrice = price
                 };
+                ClearTexts();
                 return servicesPrices;
             }
             catch (Exception ex)
@@ -222,7 +224,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
-                GetAllServices();
+                GetAllServices(false);
                 if ((!string.IsNullOrEmpty(nameTextAdd.Text)) && (!string.IsNullOrEmpty(priceTextAdd.Text)))
                 {
                     ServicesPrices data = new ServicesPrices
@@ -230,6 +232,7 @@ namespace ServicesMuoqa.Views
                         ServiceName = nameTextAdd.Text,
                         ServicePrice = priceTextAdd.Text
                     };
+                    ClearTexts();
                     return data;
                 }
                 throw new Exception("Hay parametros vacios");
@@ -311,7 +314,7 @@ namespace ServicesMuoqa.Views
                 Log.Error(ex.Message);
                 Console.WriteLine(ex.Message);
                 MessageBox.Show(ex.ToString());
-                GetAllServices();
+                GetAllServices(true);
                 return string.Empty;
             }
         }
@@ -388,7 +391,7 @@ namespace ServicesMuoqa.Views
                 else if(string.IsNullOrEmpty(cmbTextSearch.Text) && e.KeyCode == Keys.Back)
                 {
                     cmbTextSearch.DroppedDown = false;
-                    GetAllServices();
+                    GetAllServices(true);
                 }
             }
             catch (Exception ex)

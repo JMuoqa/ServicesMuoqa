@@ -31,12 +31,12 @@ namespace ServicesMuoqa.Views
         /// </summary>
         private void InitializeComponent()
         {
-            ChartArea chartArea1 = new ChartArea();
-            Legend legend1 = new Legend();
-            Series series1 = new Series();
-            ChartArea chartArea2 = new ChartArea();
-            Legend legend2 = new Legend();
-            Series series2 = new Series();
+            ChartArea chartArea3 = new ChartArea();
+            Legend legend3 = new Legend();
+            Series series3 = new Series();
+            ChartArea chartArea4 = new ChartArea();
+            Legend legend4 = new Legend();
+            Series series4 = new Series();
             chart1 = new Chart();
             label1 = new Label();
             label2 = new Label();
@@ -71,18 +71,18 @@ namespace ServicesMuoqa.Views
             // 
             chart1.BackColor = Color.FromArgb(10, 16, 25);
             chart1.BorderlineColor = Color.Empty;
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chart1.Legends.Add(legend3);
             chart1.Location = new Point(6, 54);
             chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = SeriesChartType.Pie;
-            series1.LabelBackColor = Color.FromArgb(10, 16, 25);
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = SeriesChartType.Pie;
+            series3.LabelBackColor = Color.FromArgb(10, 16, 25);
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chart1.Series.Add(series3);
             chart1.Size = new Size(408, 250);
             chart1.TabIndex = 0;
             chart1.Text = "Rendimiento del ultimo mes";
@@ -113,18 +113,18 @@ namespace ServicesMuoqa.Views
             // 
             chart2.BackColor = Color.FromArgb(10, 16, 25);
             chart2.BorderlineColor = Color.Empty;
-            chartArea2.Name = "ChartArea1";
-            chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart2.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            chart2.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chart2.Legends.Add(legend4);
             chart2.Location = new Point(465, 54);
             chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = SeriesChartType.Pie;
-            series2.LabelBackColor = Color.FromArgb(10, 16, 25);
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart2.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = SeriesChartType.Pie;
+            series4.LabelBackColor = Color.FromArgb(10, 16, 25);
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chart2.Series.Add(series4);
             chart2.Size = new Size(368, 250);
             chart2.TabIndex = 3;
             chart2.Text = "Gastos y ganancias del ultimo mes";
@@ -209,6 +209,7 @@ namespace ServicesMuoqa.Views
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "", "Sueldo", "Muoqa", "Otro" });
             comboBox3.Location = new Point(123, 199);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(111, 23);
@@ -261,7 +262,7 @@ namespace ServicesMuoqa.Views
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Sueldo", "Muoqa", "Otro" });
+            comboBox1.Items.AddRange(new object[] { "", "Sueldo", "Muoqa", "Otro" });
             comboBox1.Location = new Point(123, 54);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(111, 23);
