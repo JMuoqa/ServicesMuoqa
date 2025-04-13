@@ -9,5 +9,6 @@
         public DateTime DateR { get; set; }
         public string Validity { get; set; }
         public string MoreInfo { get; set; }
+        public string Months { get; set; }
     }
 }

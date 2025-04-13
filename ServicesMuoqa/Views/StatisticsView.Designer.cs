@@ -31,61 +31,72 @@ namespace ServicesMuoqa.Views
         /// </summary>
         private void InitializeComponent()
         {
-            ChartArea chartArea3 = new ChartArea();
-            Legend legend3 = new Legend();
-            Series series3 = new Series();
-            ChartArea chartArea4 = new ChartArea();
-            Legend legend4 = new Legend();
-            Series series4 = new Series();
-            chart1 = new Chart();
+            ChartArea chartArea5 = new ChartArea();
+            Legend legend5 = new Legend();
+            Series series5 = new Series();
+            ChartArea chartArea6 = new ChartArea();
+            Legend legend6 = new Legend();
+            Series series6 = new Series();
+            StatisticsLastMonths = new Chart();
             label1 = new Label();
             label2 = new Label();
-            chart2 = new Chart();
+            ExpensesAndEarningsLastMonth = new Chart();
             groupBox1 = new GroupBox();
+            IncomeTag = new Label();
+            label19 = new Label();
+            ExpenseTag = new Label();
+            label17 = new Label();
+            DifferenceLabel = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            label13 = new Label();
+            label = new Label();
+            label11 = new Label();
             groupBox2 = new GroupBox();
-            richTextBox2 = new RichTextBox();
+            ExtraExpenseInfoTxt = new RichTextBox();
             label10 = new Label();
             label9 = new Label();
-            comboBox4 = new ComboBox();
-            comboBox3 = new ComboBox();
+            ExpenseRegistrationDateTxt = new ComboBox();
+            TextReasonExpense = new ComboBox();
             label8 = new Label();
-            richTextBox1 = new RichTextBox();
+            ExtraIncomeInfoTxt = new RichTextBox();
             label7 = new Label();
-            comboBox2 = new ComboBox();
+            IncomeRegistrationDateTxt = new ComboBox();
             label6 = new Label();
-            comboBox1 = new ComboBox();
+            TextReasonIncome = new ComboBox();
             label5 = new Label();
-            button2 = new Button();
-            button1 = new Button();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            EgressButton = new Button();
+            InputButton = new Button();
+            ExpenseAmountTxt = new TextBox();
+            IncomeAmountTxt = new TextBox();
             label4 = new Label();
             label3 = new Label();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chart2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)StatisticsLastMonths).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ExpensesAndEarningsLastMonth).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // chart1
+            // StatisticsLastMonths
             // 
-            chart1.BackColor = Color.FromArgb(10, 16, 25);
-            chart1.BorderlineColor = Color.Empty;
-            chartArea3.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chart1.Legends.Add(legend3);
-            chart1.Location = new Point(6, 54);
-            chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = SeriesChartType.Pie;
-            series3.LabelBackColor = Color.FromArgb(10, 16, 25);
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chart1.Series.Add(series3);
-            chart1.Size = new Size(408, 250);
-            chart1.TabIndex = 0;
-            chart1.Text = "Rendimiento del ultimo mes";
+            StatisticsLastMonths.BackColor = Color.Transparent;
+            StatisticsLastMonths.BorderlineColor = Color.Empty;
+            chartArea5.Name = "ChartArea1";
+            StatisticsLastMonths.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            StatisticsLastMonths.Legends.Add(legend5);
+            StatisticsLastMonths.Location = new Point(6, 54);
+            StatisticsLastMonths.Name = "StatisticsLastMonths";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = SeriesChartType.Pie;
+            series5.Font = new Font("Segoe UI", 10F);
+            series5.LabelBackColor = Color.Transparent;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            StatisticsLastMonths.Series.Add(series5);
+            StatisticsLastMonths.Size = new Size(408, 206);
+            StatisticsLastMonths.TabIndex = 0;
+            StatisticsLastMonths.Text = "Rendimiento del ultimo mes";
             // 
             // label1
             // 
@@ -109,31 +120,42 @@ namespace ServicesMuoqa.Views
             label2.TabIndex = 2;
             label2.Text = "Gastos y ganancias del ultimo mes";
             // 
-            // chart2
+            // ExpensesAndEarningsLastMonth
             // 
-            chart2.BackColor = Color.FromArgb(10, 16, 25);
-            chart2.BorderlineColor = Color.Empty;
-            chartArea4.Name = "ChartArea1";
-            chart2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chart2.Legends.Add(legend4);
-            chart2.Location = new Point(465, 54);
-            chart2.Name = "chart2";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = SeriesChartType.Pie;
-            series4.LabelBackColor = Color.FromArgb(10, 16, 25);
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chart2.Series.Add(series4);
-            chart2.Size = new Size(368, 250);
-            chart2.TabIndex = 3;
-            chart2.Text = "Gastos y ganancias del ultimo mes";
+            ExpensesAndEarningsLastMonth.BackColor = Color.Transparent;
+            ExpensesAndEarningsLastMonth.BorderlineColor = Color.Empty;
+            chartArea6.Name = "ChartArea1";
+            ExpensesAndEarningsLastMonth.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            ExpensesAndEarningsLastMonth.Legends.Add(legend6);
+            ExpensesAndEarningsLastMonth.Location = new Point(465, 54);
+            ExpensesAndEarningsLastMonth.Name = "ExpensesAndEarningsLastMonth";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = SeriesChartType.Pie;
+            series6.Font = new Font("Segoe UI", 10F);
+            series6.LabelBackColor = Color.Transparent;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            ExpensesAndEarningsLastMonth.Series.Add(series6);
+            ExpensesAndEarningsLastMonth.Size = new Size(368, 206);
+            ExpensesAndEarningsLastMonth.TabIndex = 3;
+            ExpensesAndEarningsLastMonth.Text = "Gastos y ganancias del ultimo mes";
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(IncomeTag);
+            groupBox1.Controls.Add(label19);
+            groupBox1.Controls.Add(ExpenseTag);
+            groupBox1.Controls.Add(label17);
+            groupBox1.Controls.Add(DifferenceLabel);
+            groupBox1.Controls.Add(label15);
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(label13);
+            groupBox1.Controls.Add(label);
+            groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(chart2);
-            groupBox1.Controls.Add(chart1);
+            groupBox1.Controls.Add(ExpensesAndEarningsLastMonth);
+            groupBox1.Controls.Add(StatisticsLastMonths);
             groupBox1.Controls.Add(label2);
             groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(12, 12);
@@ -143,24 +165,124 @@ namespace ServicesMuoqa.Views
             groupBox1.TabStop = false;
             groupBox1.Text = "Estadisticas";
             // 
+            // IncomeTag
+            // 
+            IncomeTag.AutoSize = true;
+            IncomeTag.Font = new Font("Segoe UI", 18F);
+            IncomeTag.Location = new Point(598, 365);
+            IncomeTag.Name = "IncomeTag";
+            IncomeTag.Size = new Size(24, 32);
+            IncomeTag.TabIndex = 13;
+            IncomeTag.Text = "-";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 18F);
+            label19.Location = new Point(465, 365);
+            label19.Name = "label19";
+            label19.Size = new Size(108, 32);
+            label19.TabIndex = 12;
+            label19.Text = "Ingresos:";
+            // 
+            // ExpenseTag
+            // 
+            ExpenseTag.AutoSize = true;
+            ExpenseTag.Font = new Font("Segoe UI", 18F);
+            ExpenseTag.Location = new Point(598, 326);
+            ExpenseTag.Name = "ExpenseTag";
+            ExpenseTag.Size = new Size(24, 32);
+            ExpenseTag.TabIndex = 11;
+            ExpenseTag.Text = "-";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 18F);
+            label17.Location = new Point(465, 326);
+            label17.Name = "label17";
+            label17.Size = new Size(89, 32);
+            label17.TabIndex = 10;
+            label17.Text = "Gastos:";
+            // 
+            // DifferenceLabel
+            // 
+            DifferenceLabel.AutoSize = true;
+            DifferenceLabel.Font = new Font("Segoe UI", 18F);
+            DifferenceLabel.Location = new Point(598, 287);
+            DifferenceLabel.Name = "DifferenceLabel";
+            DifferenceLabel.Size = new Size(24, 32);
+            DifferenceLabel.TabIndex = 9;
+            DifferenceLabel.Text = "-";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 18F);
+            label15.Location = new Point(465, 287);
+            label15.Name = "label15";
+            label15.Size = new Size(127, 32);
+            label15.TabIndex = 8;
+            label15.Text = "Diferencia:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 18F);
+            label14.Location = new Point(220, 326);
+            label14.Name = "label14";
+            label14.Size = new Size(85, 32);
+            label14.TabIndex = 7;
+            label14.Text = "Pronto";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 18F);
+            label13.Location = new Point(6, 326);
+            label13.Name = "label13";
+            label13.Size = new Size(186, 32);
+            label13.TabIndex = 6;
+            label13.Text = "Ingresos totales:";
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Font = new Font("Segoe UI", 18F);
+            label.Location = new Point(220, 287);
+            label.Name = "label";
+            label.Size = new Size(85, 32);
+            label.TabIndex = 5;
+            label.Text = "Pronto";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 18F);
+            label11.Location = new Point(6, 287);
+            label11.Name = "label11";
+            label11.Size = new Size(208, 32);
+            label11.TabIndex = 4;
+            label11.Text = "Tu mejor mes fue:";
+            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(richTextBox2);
+            groupBox2.Controls.Add(ExtraExpenseInfoTxt);
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(comboBox4);
-            groupBox2.Controls.Add(comboBox3);
+            groupBox2.Controls.Add(ExpenseRegistrationDateTxt);
+            groupBox2.Controls.Add(TextReasonExpense);
             groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(richTextBox1);
+            groupBox2.Controls.Add(ExtraIncomeInfoTxt);
             groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(comboBox2);
+            groupBox2.Controls.Add(IncomeRegistrationDateTxt);
             groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Controls.Add(TextReasonIncome);
             groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(button2);
-            groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(EgressButton);
+            groupBox2.Controls.Add(InputButton);
+            groupBox2.Controls.Add(ExpenseAmountTxt);
+            groupBox2.Controls.Add(IncomeAmountTxt);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label3);
             groupBox2.ForeColor = Color.White;
@@ -171,19 +293,19 @@ namespace ServicesMuoqa.Views
             groupBox2.TabStop = false;
             groupBox2.Text = "Cargar Ingresos y Gastos Externos";
             // 
-            // richTextBox2
+            // ExtraExpenseInfoTxt
             // 
-            richTextBox2.BorderStyle = BorderStyle.None;
-            richTextBox2.Location = new Point(6, 243);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(345, 51);
-            richTextBox2.TabIndex = 17;
-            richTextBox2.Text = "";
+            ExtraExpenseInfoTxt.BorderStyle = BorderStyle.None;
+            ExtraExpenseInfoTxt.Location = new Point(8, 340);
+            ExtraExpenseInfoTxt.Name = "ExtraExpenseInfoTxt";
+            ExtraExpenseInfoTxt.Size = new Size(345, 119);
+            ExtraExpenseInfoTxt.TabIndex = 17;
+            ExtraExpenseInfoTxt.Text = "";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(6, 225);
+            label10.Location = new Point(8, 322);
             label10.Name = "label10";
             label10.Size = new Size(53, 15);
             label10.TabIndex = 16;
@@ -192,46 +314,46 @@ namespace ServicesMuoqa.Views
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(240, 181);
+            label9.Location = new Point(242, 278);
             label9.Name = "label9";
             label9.Size = new Size(38, 15);
             label9.TabIndex = 15;
             label9.Text = "Fecha";
             // 
-            // comboBox4
+            // ExpenseRegistrationDateTxt
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(240, 199);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(111, 23);
-            comboBox4.TabIndex = 14;
+            ExpenseRegistrationDateTxt.FormattingEnabled = true;
+            ExpenseRegistrationDateTxt.Location = new Point(242, 296);
+            ExpenseRegistrationDateTxt.Name = "ExpenseRegistrationDateTxt";
+            ExpenseRegistrationDateTxt.Size = new Size(111, 23);
+            ExpenseRegistrationDateTxt.TabIndex = 14;
             // 
-            // comboBox3
+            // TextReasonExpense
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "", "Sueldo", "Muoqa", "Otro" });
-            comboBox3.Location = new Point(123, 199);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(111, 23);
-            comboBox3.TabIndex = 13;
+            TextReasonExpense.FormattingEnabled = true;
+            TextReasonExpense.Items.AddRange(new object[] { "", "Comida", "Perro", "Ropa", "Muoqa", "Comida Rapida", "Transporte", "Deudas", "Casa", "Otro" });
+            TextReasonExpense.Location = new Point(125, 296);
+            TextReasonExpense.Name = "TextReasonExpense";
+            TextReasonExpense.Size = new Size(111, 23);
+            TextReasonExpense.TabIndex = 13;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(123, 181);
+            label8.Location = new Point(125, 278);
             label8.Name = "label8";
             label8.Size = new Size(45, 15);
             label8.TabIndex = 12;
             label8.Text = "Motivo";
             // 
-            // richTextBox1
+            // ExtraIncomeInfoTxt
             // 
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Location = new Point(6, 98);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(345, 51);
-            richTextBox1.TabIndex = 11;
-            richTextBox1.Text = "";
+            ExtraIncomeInfoTxt.BorderStyle = BorderStyle.None;
+            ExtraIncomeInfoTxt.Location = new Point(6, 98);
+            ExtraIncomeInfoTxt.Name = "ExtraIncomeInfoTxt";
+            ExtraIncomeInfoTxt.Size = new Size(345, 119);
+            ExtraIncomeInfoTxt.TabIndex = 11;
+            ExtraIncomeInfoTxt.Text = "";
             // 
             // label7
             // 
@@ -242,13 +364,13 @@ namespace ServicesMuoqa.Views
             label7.TabIndex = 10;
             label7.Text = "Mas Info";
             // 
-            // comboBox2
+            // IncomeRegistrationDateTxt
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(240, 54);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(111, 23);
-            comboBox2.TabIndex = 9;
+            IncomeRegistrationDateTxt.FormattingEnabled = true;
+            IncomeRegistrationDateTxt.Location = new Point(240, 54);
+            IncomeRegistrationDateTxt.Name = "IncomeRegistrationDateTxt";
+            IncomeRegistrationDateTxt.Size = new Size(111, 23);
+            IncomeRegistrationDateTxt.TabIndex = 9;
             // 
             // label6
             // 
@@ -259,14 +381,14 @@ namespace ServicesMuoqa.Views
             label6.TabIndex = 8;
             label6.Text = "Fecha";
             // 
-            // comboBox1
+            // TextReasonIncome
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "", "Sueldo", "Muoqa", "Otro" });
-            comboBox1.Location = new Point(123, 54);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(111, 23);
-            comboBox1.TabIndex = 7;
+            TextReasonIncome.FormattingEnabled = true;
+            TextReasonIncome.Items.AddRange(new object[] { "", "Sueldo", "Muoqa", "Otro" });
+            TextReasonIncome.Location = new Point(123, 54);
+            TextReasonIncome.Name = "TextReasonIncome";
+            TextReasonIncome.Size = new Size(111, 23);
+            TextReasonIncome.TabIndex = 7;
             // 
             // label5
             // 
@@ -277,44 +399,48 @@ namespace ServicesMuoqa.Views
             label5.TabIndex = 6;
             label5.Text = "Motivo";
             // 
-            // button2
+            // EgressButton
             // 
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(276, 300);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 5;
-            button2.Text = "Registrar";
-            button2.UseVisualStyleBackColor = true;
+            EgressButton.ForeColor = Color.Black;
+            EgressButton.Location = new Point(278, 465);
+            EgressButton.Name = "EgressButton";
+            EgressButton.Size = new Size(75, 23);
+            EgressButton.TabIndex = 5;
+            EgressButton.Text = "Registrar";
+            EgressButton.UseVisualStyleBackColor = true;
+            EgressButton.Click += EgressButton_Click;
             // 
-            // button1
+            // InputButton
             // 
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(276, 155);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 4;
-            button1.Text = "Registrar";
-            button1.UseVisualStyleBackColor = true;
+            InputButton.ForeColor = Color.Black;
+            InputButton.Location = new Point(278, 223);
+            InputButton.Name = "InputButton";
+            InputButton.Size = new Size(75, 23);
+            InputButton.TabIndex = 4;
+            InputButton.Text = "Registrar";
+            InputButton.UseVisualStyleBackColor = true;
+            InputButton.Click += InputButton_Click;
             // 
-            // textBox2
+            // ExpenseAmountTxt
             // 
-            textBox2.Location = new Point(6, 199);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(111, 23);
-            textBox2.TabIndex = 3;
+            ExpenseAmountTxt.Location = new Point(8, 296);
+            ExpenseAmountTxt.Name = "ExpenseAmountTxt";
+            ExpenseAmountTxt.Size = new Size(111, 23);
+            ExpenseAmountTxt.TabIndex = 3;
+            ExpenseAmountTxt.KeyPress += AmountTxt_KeyPress;
             // 
-            // textBox1
+            // IncomeAmountTxt
             // 
-            textBox1.Location = new Point(6, 54);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(111, 23);
-            textBox1.TabIndex = 2;
+            IncomeAmountTxt.Location = new Point(6, 54);
+            IncomeAmountTxt.Name = "IncomeAmountTxt";
+            IncomeAmountTxt.Size = new Size(111, 23);
+            IncomeAmountTxt.TabIndex = 2;
+            IncomeAmountTxt.KeyPress += AmountTxt_KeyPress;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 181);
+            label4.Location = new Point(8, 278);
             label4.Name = "label4";
             label4.Size = new Size(42, 15);
             label4.TabIndex = 1;
@@ -340,8 +466,8 @@ namespace ServicesMuoqa.Views
             FormBorderStyle = FormBorderStyle.None;
             Name = "StatisticsView";
             Text = "StatisticsView";
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chart2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)StatisticsLastMonths).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ExpensesAndEarningsLastMonth).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -350,29 +476,39 @@ namespace ServicesMuoqa.Views
         }
 
         #endregion
-        private Chart chart1;
+        private Chart StatisticsLastMonths;
         private Label label1;
         private Label label2;
-        private Chart chart2;
+        private Chart ExpensesAndEarningsLastMonth;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Button button1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private Button InputButton;
+        private TextBox ExpenseAmountTxt;
+        private TextBox IncomeAmountTxt;
         private Label label4;
         private Label label3;
-        private Button button2;
-        private ComboBox comboBox2;
+        private Button EgressButton;
+        private ComboBox IncomeRegistrationDateTxt;
         private Label label6;
-        private ComboBox comboBox1;
+        private ComboBox TextReasonIncome;
         private Label label5;
-        private RichTextBox richTextBox1;
+        private RichTextBox ExtraIncomeInfoTxt;
         private Label label7;
-        private RichTextBox richTextBox2;
+        private RichTextBox ExtraExpenseInfoTxt;
         private Label label10;
         private Label label9;
-        private ComboBox comboBox4;
-        private ComboBox comboBox3;
+        private ComboBox ExpenseRegistrationDateTxt;
+        private ComboBox TextReasonExpense;
         private Label label8;
+        private Label label11;
+        private Label label;
+        private Label label14;
+        private Label label13;
+        private Label DifferenceLabel;
+        private Label label15;
+        private Label ExpenseTag;
+        private Label label17;
+        private Label label19;
+        private Label IncomeTag;
     }
 }

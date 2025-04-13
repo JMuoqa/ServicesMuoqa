@@ -1,4 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <AppInfo>
-	<Version>0.95</Version>
+	<Version>0.96</Version>
 </AppInfo>
+<!--
+Version actualizada el 13/04/2025 forma parte de las estadisticas
+funciones de cargar gastos e ingresos, y que aparezcan el los graficos
+-->

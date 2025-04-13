@@ -61,6 +61,7 @@ namespace ServicesMuoqa
                 services.AddTransient<MainView>();
                 services.AddTransient<Inicio>();
                 services.AddScoped<ManageServices>();
+                services.AddScoped<LogFinancialTransactions>();
                 services.AddScoped<Jobs>();
             });
         }
