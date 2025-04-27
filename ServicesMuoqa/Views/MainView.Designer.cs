@@ -31,32 +31,31 @@ namespace ServicesMuoqa.Views
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupActivation = new GroupBox();
-            activateBtn = new Button();
-            idTextDelete = new TextBox();
-            idLabelDelete = new Label();
+            activateButton = new Button();
+            deleteIdText = new TextBox();
+            deleteIdLabel = new Label();
             deleteButton = new Button();
             groupAdd = new GroupBox();
             addButton = new Button();
-            priceLabelAdd = new Label();
-            priceTextAdd = new TextBox();
-            nameTextAdd = new TextBox();
-            nameLabelAdd = new Label();
+            addPriceLabel = new Label();
+            addPriceText = new TextBox();
+            addNameText = new TextBox();
+            addEditGroupNameLabel = new Label();
             groupEdit = new GroupBox();
             editButton = new Button();
-            label2 = new Label();
-            label1 = new Label();
-            idTextEdit = new TextBox();
-            priceTextEdit = new TextBox();
-            label3 = new Label();
-            nameTextEdit = new TextBox();
+            nameToEditLabel = new Label();
+            priceToEditLabel = new Label();
+            editIdText = new TextBox();
+            editPriceText = new TextBox();
+            idForEditingLabel = new Label();
+            editNameText = new TextBox();
             groupSearch = new GroupBox();
-            cmbTextSearch = new ComboBox();
+            searchComboBoxText = new ComboBox();
             searchButton = new Button();
             nameLabelSearch = new Label();
-            idLabelSearch = new Label();
             servicesData = new DataGridView();
             groupActivation.SuspendLayout();
             groupAdd.SuspendLayout();
@@ -67,9 +66,9 @@ namespace ServicesMuoqa.Views
             // 
             // groupActivation
             // 
-            groupActivation.Controls.Add(activateBtn);
-            groupActivation.Controls.Add(idTextDelete);
-            groupActivation.Controls.Add(idLabelDelete);
+            groupActivation.Controls.Add(activateButton);
+            groupActivation.Controls.Add(deleteIdText);
+            groupActivation.Controls.Add(deleteIdLabel);
             groupActivation.Controls.Add(deleteButton);
             groupActivation.ForeColor = Color.White;
             groupActivation.Location = new Point(12, 377);
@@ -79,34 +78,34 @@ namespace ServicesMuoqa.Views
             groupActivation.TabStop = false;
             groupActivation.Text = "Activación";
             // 
-            // activateBtn
+            // activateButton
             // 
-            activateBtn.ForeColor = Color.Black;
-            activateBtn.Location = new Point(10, 86);
-            activateBtn.Name = "activateBtn";
-            activateBtn.Size = new Size(90, 23);
-            activateBtn.TabIndex = 3;
-            activateBtn.Text = "Activar";
-            activateBtn.UseVisualStyleBackColor = true;
-            activateBtn.Click += activateBtn_Click;
+            activateButton.ForeColor = Color.Black;
+            activateButton.Location = new Point(10, 86);
+            activateButton.Name = "activateButton";
+            activateButton.Size = new Size(90, 23);
+            activateButton.TabIndex = 3;
+            activateButton.Text = "Activar";
+            activateButton.UseVisualStyleBackColor = true;
+            activateButton.Click += activateButton_Click;
             // 
-            // idTextDelete
+            // deleteIdText
             // 
-            idTextDelete.Location = new Point(10, 57);
-            idTextDelete.Name = "idTextDelete";
-            idTextDelete.PlaceholderText = "1, 2, 3";
-            idTextDelete.Size = new Size(184, 23);
-            idTextDelete.TabIndex = 2;
-            idTextDelete.KeyPress += idTextDelete_KeyPress;
+            deleteIdText.Location = new Point(10, 57);
+            deleteIdText.Name = "deleteIdText";
+            deleteIdText.PlaceholderText = "1, 2, 3";
+            deleteIdText.Size = new Size(184, 23);
+            deleteIdText.TabIndex = 2;
+            deleteIdText.KeyPress += deleteIdText_KeyPress;
             // 
-            // idLabelDelete
+            // deleteIdLabel
             // 
-            idLabelDelete.AutoSize = true;
-            idLabelDelete.Location = new Point(10, 31);
-            idLabelDelete.Name = "idLabelDelete";
-            idLabelDelete.Size = new Size(29, 15);
-            idLabelDelete.TabIndex = 1;
-            idLabelDelete.Text = "ID: *";
+            deleteIdLabel.AutoSize = true;
+            deleteIdLabel.Location = new Point(10, 31);
+            deleteIdLabel.Name = "deleteIdLabel";
+            deleteIdLabel.Size = new Size(29, 15);
+            deleteIdLabel.TabIndex = 1;
+            deleteIdLabel.Text = "ID: *";
             // 
             // deleteButton
             // 
@@ -122,10 +121,10 @@ namespace ServicesMuoqa.Views
             // groupAdd
             // 
             groupAdd.Controls.Add(addButton);
-            groupAdd.Controls.Add(priceLabelAdd);
-            groupAdd.Controls.Add(priceTextAdd);
-            groupAdd.Controls.Add(nameTextAdd);
-            groupAdd.Controls.Add(nameLabelAdd);
+            groupAdd.Controls.Add(addPriceLabel);
+            groupAdd.Controls.Add(addPriceText);
+            groupAdd.Controls.Add(addNameText);
+            groupAdd.Controls.Add(addEditGroupNameLabel);
             groupAdd.ForeColor = Color.White;
             groupAdd.Location = new Point(218, 377);
             groupAdd.Name = "groupAdd";
@@ -145,51 +144,51 @@ namespace ServicesMuoqa.Views
             addButton.UseVisualStyleBackColor = true;
             addButton.Click += addButton_Click;
             // 
-            // priceLabelAdd
+            // addPriceLabel
             // 
-            priceLabelAdd.AutoSize = true;
-            priceLabelAdd.Location = new Point(196, 31);
-            priceLabelAdd.Name = "priceLabelAdd";
-            priceLabelAdd.Size = new Size(51, 15);
-            priceLabelAdd.TabIndex = 5;
-            priceLabelAdd.Text = "Precio: *";
+            addPriceLabel.AutoSize = true;
+            addPriceLabel.Location = new Point(196, 31);
+            addPriceLabel.Name = "addPriceLabel";
+            addPriceLabel.Size = new Size(51, 15);
+            addPriceLabel.TabIndex = 5;
+            addPriceLabel.Text = "Precio: *";
             // 
-            // priceTextAdd
+            // addPriceText
             // 
-            priceTextAdd.Location = new Point(196, 57);
-            priceTextAdd.Name = "priceTextAdd";
-            priceTextAdd.PlaceholderText = "$100000";
-            priceTextAdd.Size = new Size(184, 23);
-            priceTextAdd.TabIndex = 4;
-            priceTextAdd.KeyPress += priceTextAdd_KeyPress;
+            addPriceText.Location = new Point(196, 57);
+            addPriceText.Name = "addPriceText";
+            addPriceText.PlaceholderText = "$100000";
+            addPriceText.Size = new Size(184, 23);
+            addPriceText.TabIndex = 4;
+            addPriceText.KeyPress += priceTextAdd_KeyPress;
             // 
-            // nameTextAdd
+            // addNameText
             // 
-            nameTextAdd.Location = new Point(6, 57);
-            nameTextAdd.Name = "nameTextAdd";
-            nameTextAdd.PlaceholderText = "Servicio";
-            nameTextAdd.Size = new Size(184, 23);
-            nameTextAdd.TabIndex = 3;
-            nameTextAdd.KeyPress += nameTextAdd_KeyPress;
+            addNameText.Location = new Point(6, 57);
+            addNameText.Name = "addNameText";
+            addNameText.PlaceholderText = "Servicio";
+            addNameText.Size = new Size(184, 23);
+            addNameText.TabIndex = 3;
+            addNameText.KeyPress += addNameText_KeyPress;
             // 
-            // nameLabelAdd
+            // addEditGroupNameLabel
             // 
-            nameLabelAdd.AutoSize = true;
-            nameLabelAdd.Location = new Point(6, 31);
-            nameLabelAdd.Name = "nameLabelAdd";
-            nameLabelAdd.Size = new Size(62, 15);
-            nameLabelAdd.TabIndex = 0;
-            nameLabelAdd.Text = "Nombre: *";
+            addEditGroupNameLabel.AutoSize = true;
+            addEditGroupNameLabel.Location = new Point(6, 31);
+            addEditGroupNameLabel.Name = "addEditGroupNameLabel";
+            addEditGroupNameLabel.Size = new Size(62, 15);
+            addEditGroupNameLabel.TabIndex = 0;
+            addEditGroupNameLabel.Text = "Nombre: *";
             // 
             // groupEdit
             // 
             groupEdit.Controls.Add(editButton);
-            groupEdit.Controls.Add(label2);
-            groupEdit.Controls.Add(label1);
-            groupEdit.Controls.Add(idTextEdit);
-            groupEdit.Controls.Add(priceTextEdit);
-            groupEdit.Controls.Add(label3);
-            groupEdit.Controls.Add(nameTextEdit);
+            groupEdit.Controls.Add(nameToEditLabel);
+            groupEdit.Controls.Add(priceToEditLabel);
+            groupEdit.Controls.Add(editIdText);
+            groupEdit.Controls.Add(editPriceText);
+            groupEdit.Controls.Add(idForEditingLabel);
+            groupEdit.Controls.Add(editNameText);
             groupEdit.ForeColor = Color.White;
             groupEdit.Location = new Point(608, 377);
             groupEdit.Name = "groupEdit";
@@ -209,64 +208,63 @@ namespace ServicesMuoqa.Views
             editButton.UseVisualStyleBackColor = true;
             editButton.Click += editButton_Click;
             // 
-            // label2
+            // nameToEditLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(80, 31);
-            label2.Name = "label2";
-            label2.Size = new Size(51, 15);
-            label2.TabIndex = 6;
-            label2.Text = "Nombre";
+            nameToEditLabel.AutoSize = true;
+            nameToEditLabel.Location = new Point(80, 31);
+            nameToEditLabel.Name = "nameToEditLabel";
+            nameToEditLabel.Size = new Size(51, 15);
+            nameToEditLabel.TabIndex = 6;
+            nameToEditLabel.Text = "Nombre";
             // 
-            // label1
+            // priceToEditLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(270, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(40, 15);
-            label1.TabIndex = 11;
-            label1.Text = "Precio";
+            priceToEditLabel.AutoSize = true;
+            priceToEditLabel.Location = new Point(270, 31);
+            priceToEditLabel.Name = "priceToEditLabel";
+            priceToEditLabel.Size = new Size(40, 15);
+            priceToEditLabel.TabIndex = 11;
+            priceToEditLabel.Text = "Precio";
             // 
-            // idTextEdit
+            // editIdText
             // 
-            idTextEdit.Location = new Point(6, 57);
-            idTextEdit.Name = "idTextEdit";
-            idTextEdit.PlaceholderText = "1, 2, 3";
-            idTextEdit.Size = new Size(70, 23);
-            idTextEdit.TabIndex = 8;
+            editIdText.Location = new Point(6, 57);
+            editIdText.Name = "editIdText";
+            editIdText.PlaceholderText = "1, 2, 3";
+            editIdText.Size = new Size(70, 23);
+            editIdText.TabIndex = 8;
             // 
-            // priceTextEdit
+            // editPriceText
             // 
-            priceTextEdit.Location = new Point(270, 57);
-            priceTextEdit.Name = "priceTextEdit";
-            priceTextEdit.PlaceholderText = "$100000";
-            priceTextEdit.Size = new Size(95, 23);
-            priceTextEdit.TabIndex = 10;
-            priceTextEdit.KeyPress += priceTextEdit_KeyPress;
+            editPriceText.Location = new Point(270, 57);
+            editPriceText.Name = "editPriceText";
+            editPriceText.PlaceholderText = "$100000";
+            editPriceText.Size = new Size(95, 23);
+            editPriceText.TabIndex = 10;
+            editPriceText.KeyPress += editPriceText_KeyPress;
             // 
-            // label3
+            // idForEditingLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 31);
-            label3.Name = "label3";
-            label3.Size = new Size(29, 15);
-            label3.TabIndex = 7;
-            label3.Text = "ID: *";
+            idForEditingLabel.AutoSize = true;
+            idForEditingLabel.Location = new Point(6, 31);
+            idForEditingLabel.Name = "idForEditingLabel";
+            idForEditingLabel.Size = new Size(29, 15);
+            idForEditingLabel.TabIndex = 7;
+            idForEditingLabel.Text = "ID: *";
             // 
-            // nameTextEdit
+            // editNameText
             // 
-            nameTextEdit.Location = new Point(80, 57);
-            nameTextEdit.Name = "nameTextEdit";
-            nameTextEdit.PlaceholderText = "Servicio";
-            nameTextEdit.Size = new Size(184, 23);
-            nameTextEdit.TabIndex = 9;
+            editNameText.Location = new Point(80, 57);
+            editNameText.Name = "editNameText";
+            editNameText.PlaceholderText = "Servicio";
+            editNameText.Size = new Size(184, 23);
+            editNameText.TabIndex = 9;
             // 
             // groupSearch
             // 
-            groupSearch.Controls.Add(cmbTextSearch);
+            groupSearch.Controls.Add(searchComboBoxText);
             groupSearch.Controls.Add(searchButton);
             groupSearch.Controls.Add(nameLabelSearch);
-            groupSearch.Controls.Add(idLabelSearch);
             groupSearch.ForeColor = Color.White;
             groupSearch.Location = new Point(996, 377);
             groupSearch.Name = "groupSearch";
@@ -275,15 +273,15 @@ namespace ServicesMuoqa.Views
             groupSearch.TabStop = false;
             groupSearch.Text = "Buscar";
             // 
-            // cmbTextSearch
+            // searchComboBoxText
             // 
-            cmbTextSearch.FormattingEnabled = true;
-            cmbTextSearch.Location = new Point(6, 57);
-            cmbTextSearch.Name = "cmbTextSearch";
-            cmbTextSearch.Size = new Size(219, 23);
-            cmbTextSearch.TabIndex = 14;
-            cmbTextSearch.KeyDown += cmbTextSearch_KeyDown;
-            cmbTextSearch.KeyUp += cmbTextSearch_KeyUp;
+            searchComboBoxText.FormattingEnabled = true;
+            searchComboBoxText.Location = new Point(6, 57);
+            searchComboBoxText.Name = "searchComboBoxText";
+            searchComboBoxText.Size = new Size(219, 23);
+            searchComboBoxText.TabIndex = 14;
+            searchComboBoxText.KeyDown += searchComboBoxText_KeyDown;
+            searchComboBoxText.KeyUp += searchComboBoxText_KeyUp;
             // 
             // searchButton
             // 
@@ -298,20 +296,11 @@ namespace ServicesMuoqa.Views
             // nameLabelSearch
             // 
             nameLabelSearch.AutoSize = true;
-            nameLabelSearch.Location = new Point(30, 31);
+            nameLabelSearch.Location = new Point(6, 31);
             nameLabelSearch.Name = "nameLabelSearch";
             nameLabelSearch.Size = new Size(51, 15);
             nameLabelSearch.TabIndex = 1;
             nameLabelSearch.Text = "Nombre";
-            // 
-            // idLabelSearch
-            // 
-            idLabelSearch.AutoSize = true;
-            idLabelSearch.Location = new Point(6, 31);
-            idLabelSearch.Name = "idLabelSearch";
-            idLabelSearch.Size = new Size(26, 15);
-            idLabelSearch.TabIndex = 0;
-            idLabelSearch.Text = "ID /";
             // 
             // servicesData
             // 
@@ -319,21 +308,21 @@ namespace ServicesMuoqa.Views
             servicesData.AllowUserToResizeRows = false;
             servicesData.BackgroundColor = Color.FromArgb(10, 16, 25);
             servicesData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(200, 200, 200);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(100, 100, 100);
-            servicesData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(200, 200, 200);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(100, 100, 100);
+            servicesData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             servicesData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(250, 250, 250);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(10, 16, 25);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            servicesData.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(250, 250, 250);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(10, 16, 25);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            servicesData.DefaultCellStyle = dataGridViewCellStyle4;
             servicesData.EnableHeadersVisualStyles = false;
             servicesData.GridColor = Color.FromArgb(100, 100, 100);
             servicesData.Location = new Point(12, 12);
@@ -344,7 +333,7 @@ namespace ServicesMuoqa.Views
             servicesData.Size = new Size(1215, 346);
             servicesData.TabIndex = 4;
             // 
-            // ViewMain
+            // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -356,7 +345,7 @@ namespace ServicesMuoqa.Views
             Controls.Add(groupAdd);
             Controls.Add(groupActivation);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ViewMain";
+            Name = "MainView";
             Text = "ViewMain";
             groupActivation.ResumeLayout(false);
             groupActivation.PerformLayout();
@@ -373,31 +362,30 @@ namespace ServicesMuoqa.Views
         #endregion
 
         private GroupBox groupActivation;
-        private TextBox idTextDelete;
-        private Label idLabelDelete;
+        private TextBox deleteIdText;
+        private Label deleteIdLabel;
         private Button deleteButton;
         private GroupBox groupAdd;
-        private Label priceLabelAdd;
-        private TextBox priceTextAdd;
-        private TextBox nameTextAdd;
-        private Label nameLabelAdd;
+        private Label addPriceLabel;
+        private TextBox addPriceText;
+        private TextBox addNameText;
+        private Label addEditGroupNameLabel;
         private Button addButton;
         private GroupBox groupEdit;
-        private Label label1;
-        private TextBox priceTextEdit;
-        private TextBox nameTextEdit;
-        private Label label2;
-        private TextBox idTextEdit;
-        private Label label3;
+        private Label priceToEditLabel;
+        private TextBox editPriceText;
+        private TextBox editNameText;
+        private Label nameToEditLabel;
+        private TextBox editIdText;
+        private Label idForEditingLabel;
         private Button editButton;
         private GroupBox groupSearch;
         private Label priceLabelSearch;
         private Label nameLabelSearch;
-        private Label idLabelSearch;
         private TextBox textSearch;
         private Button searchButton;
         private DataGridView servicesData;
-        private Button activateBtn;
-        private ComboBox cmbTextSearch;
+        private Button activateButton;
+        private ComboBox searchComboBoxText;
     }
 }

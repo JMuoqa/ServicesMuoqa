@@ -24,8 +24,8 @@ namespace ServicesMuoqa.Views
             _logic = logic ?? throw new ArgumentNullException(nameof(logic));
             InitializeComponent();
             string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
-            IncomeRegistrationDateTxt.Text = dateNow;
-            ExpenseRegistrationDateTxt.Text += dateNow;
+            IncomeRegistrationDateTextBox.Text = dateNow;
+            ExpenseRegistrationDateInput.Text += dateNow;
             FillInStatistics();
         }
         //Funciones con eventos
@@ -34,11 +34,11 @@ namespace ServicesMuoqa.Views
             try
             {
                 //Chequea que no esten vacios los textos
-                if(!TextChecking(ExpenseAmountTxt.Text, TextReasonExpense.Text, ExpenseRegistrationDateTxt.Text, ExtraExpenseInfoTxt.Text))
+                if(!TextChecking(ExpenseAmountInput.Text, ExpenseReasonInput.Text, ExpenseRegistrationDateInput.Text, ExtraExpenseInfoTextBox.Text))
                     MessageBox.Show("Necesitas llenar los espacios en blancos para cargar el ingreso");
                 //Esta parta hasta el switch es para guardar solo la fecha y encontrar el mes
-                string date2 = IncomeRegistrationDateTxt.Text.Replace("/", "-") ?? IncomeRegistrationDateTxt.Text;
-                DateTime dateR = DateTime.ParseExact(ExpenseRegistrationDateTxt.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                string date2 = IncomeRegistrationDateTextBox.Text.Replace("/", "-") ?? IncomeRegistrationDateTextBox.Text;
+                DateTime dateR = DateTime.ParseExact(ExpenseRegistrationDateInput.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 string month = ""; 
                 int numberMonth = dateR.Month;
                 switch (numberMonth)
@@ -61,11 +61,11 @@ namespace ServicesMuoqa.Views
                 MoneyMovement moneyMovement = new MoneyMovement
                 {
                     Category = "Gasto",
-                    Amount = ExpenseAmountTxt.Text,
-                    Reason = TextReasonExpense.Text,
+                    Amount = ExpenseAmountInput.Text,
+                    Reason = ExpenseReasonInput.Text,
                     DateR = dateR,
                     Validity = "Si",
-                    MoreInfo = ExtraExpenseInfoTxt.Text,
+                    MoreInfo = ExtraExpenseInfoTextBox.Text,
                     Months = month
                 };
                 _logic.InsertTheExpense(moneyMovement);
@@ -84,11 +84,11 @@ namespace ServicesMuoqa.Views
             try
             {
                 //Chequea que no esten vacios los textos
-                if (!TextChecking(IncomeAmountTxt.Text, TextReasonIncome.Text, IncomeRegistrationDateTxt.Text, ExtraIncomeInfoTxt.Text))
+                if (!TextChecking(IncomeAmountTextBox.Text, IncomeReasonText.Text, IncomeRegistrationDateTextBox.Text, ExtraIncomeDetailsText.Text))
                     MessageBox.Show("Necesitas llenar los espacios en blancos para cargar el ingreso");
                 //Esta parta hasta el switch es para guardar solo la fecha y encontrar el mes
-                string date2 = IncomeRegistrationDateTxt.Text.Replace("/", "-") ?? IncomeRegistrationDateTxt.Text;
-                DateTime dateR = DateTime.ParseExact(IncomeRegistrationDateTxt.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                string date2 = IncomeRegistrationDateTextBox.Text.Replace("/", "-") ?? IncomeRegistrationDateTextBox.Text;
+                DateTime dateR = DateTime.ParseExact(IncomeRegistrationDateTextBox.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 string month = "";
                 int numberMonth = dateR.Month;
                 switch (numberMonth)
@@ -111,11 +111,11 @@ namespace ServicesMuoqa.Views
                 MoneyMovement moneyMovement = new MoneyMovement
                 {
                     Category = "Ingreso",
-                    Amount = IncomeAmountTxt.Text,
-                    Reason = TextReasonIncome.Text,
+                    Amount = IncomeAmountTextBox.Text,
+                    Reason = IncomeReasonText.Text,
                     DateR = dateR,
                     Validity = "Si",
-                    MoreInfo = ExtraIncomeInfoTxt.Text,
+                    MoreInfo = ExtraIncomeDetailsText.Text,
                     Months = month
                 };
                 _logic.InsertTheIncome(moneyMovement);
@@ -149,21 +149,21 @@ namespace ServicesMuoqa.Views
         //Funciones sin eventos
         private void ClearTexts()
         {
-            IncomeAmountTxt.Clear();
-            ExtraIncomeInfoTxt.Clear();
-            ExtraIncomeInfoTxt.Clear();
-            ExpenseAmountTxt.Clear();
-            ExtraExpenseInfoTxt.Clear();
-            ExtraExpenseInfoTxt.Clear();
-            TextReasonIncome.SelectedItem = 0;
-            TextReasonExpense.SelectedItem = 0;
-            IncomeRegistrationDateTxt.SelectedItem = 0;
-            ExpenseRegistrationDateTxt.SelectedItem = 0;
+            IncomeAmountTextBox.Clear();
+            ExtraIncomeDetailsText.Clear();
+            ExtraIncomeDetailsText.Clear();
+            ExpenseAmountInput.Clear();
+            ExtraExpenseInfoTextBox.Clear();
+            ExtraExpenseInfoTextBox.Clear();
+            IncomeReasonText.SelectedItem = 0;
+            ExpenseReasonInput.SelectedItem = 0;
+            IncomeRegistrationDateTextBox.SelectedItem = 0;
+            ExpenseRegistrationDateInput.SelectedItem = 0;
         }
         private void FillInStatistics()
         {
-            ExpensesAndEarningsLastMonth.Series[0].Points.Clear();
-            StatisticsLastMonths.Series[0].Points.Clear();
+            lastMonthExpensesAndEarnings.Series[0].Points.Clear();
+            lastMonthStatisticsChart.Series[0].Points.Clear();
             //Esta funcion carga la diferencia de ganancias y perdidas del ultimo mes
             StatisticsExpensesAndEarningsLastMonth();
             //Esta funcion caraga el rendimiento de los ultmos meses
@@ -171,12 +171,16 @@ namespace ServicesMuoqa.Views
         }
         private void StatisticsExpensesAndEarningsLastMonth()
         {
+            //Obtiene los datos para llenar en los graficos
             DataTable expense = _logic.GetTheIncomeAndExpense();
+            //Aca creamos un datatable con los campos "category" y "amount" y una fila con categoria: "ingreso"
+            //y otra fila con categoria "gasto", esto es por que los datos en mysql los gastos e ingresos no estan sumados.
             DataTable commonExpense = new DataTable();
             commonExpense.Columns.Add("Category", typeof(string));
             commonExpense.Columns.Add("Amount", typeof(int));
             commonExpense.Rows.Add("Ingreso", 0);
             commonExpense.Rows.Add("Gasto", 0);
+            //Aca sumamos todos los ingresos y todos los gastos
             for (int i = 0; i < expense.Rows.Count; i++)
             {
                 string quantityText = expense.Rows[i]["Amount"].ToString();
@@ -190,14 +194,17 @@ namespace ServicesMuoqa.Views
                     }
                 }
             }
+            //Guardo los cambios
             commonExpense.AcceptChanges();
+            //calculamos la diferencia entere los ingresos y los gastos
             int difference = Convert.ToInt32(commonExpense.Rows[0]["Amount"].ToString()) - Convert.ToInt32(commonExpense.Rows[1]["Amount"].ToString());
             DifferenceLabel.Text = "$"+difference.ToString();
             IncomeTag.Text = "$" + commonExpense.Rows[0]["Amount"].ToString();
             ExpenseTag.Text = "$" + commonExpense.Rows[1]["Amount"].ToString();
+            //llenamos los graficos
             foreach (DataRow row in commonExpense.Rows)
             {
-                ExpensesAndEarningsLastMonth.Series[0].Points.AddXY($"{row["Category"]}s", row["Amount"]);
+                lastMonthExpensesAndEarnings.Series[0].Points.AddXY($"{row["Category"]}s", row["Amount"]);
             }
         }
         private void PerformanceOfRecentMonths()
@@ -248,7 +255,7 @@ namespace ServicesMuoqa.Views
             //Cargo los datos en el chart
             foreach (DataRow row in commonIncome.Rows)
             {
-                StatisticsLastMonths.Series[0].Points.AddXY($"{row["Months"]} ${row["Amount"]}", row["Amount"]);
+                lastMonthStatisticsChart.Series[0].Points.AddXY($"{row["Months"]} ${row["Amount"]}", row["Amount"]);
             }
         }
         ///Esta funcion corrige el texto ingresado para que tenga el formato de fecha adecuado. "1-2-2025" --> "01-02-2024"

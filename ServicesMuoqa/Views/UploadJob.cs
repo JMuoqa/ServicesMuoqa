@@ -30,7 +30,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
-                RequestedJobs newData = CheckNullOrEmpty();
+                RequestedJobs newData = ValidateNullOrEmpty();
                 DataTable dataTable = _jobs.AddJobs(newData);
                 LoadGrid(dataTable);
                 ClearTextBox();
@@ -46,7 +46,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
-                RequestedJobs newJob = CheckWorkToModify();
+                RequestedJobs newJob = ValidateWorkToModify();
                 DataTable data = _jobs.ModifyJob(newJob);
                 LoadGrid(data);
                 ClearTextBox();
@@ -61,21 +61,21 @@ namespace ServicesMuoqa.Views
         //Funciones sin eventos
         private void ClearTextBox()
         {
-            customerNameText.Clear();
-            customerNumberText.Clear();
-            jobNameText.Clear();
-            jobPriceText.Clear();
-            jobStatusText.Clear();
-            entryDateText.SelectedIndex = 0;
-            deliveryDateText.Clear();
-            jobIdTextModify.Clear();
-            jobNameTextModify.Clear();
-            jobPriceTextModify.Clear();
-            customerNameTextModify.Clear();
-            customerNumberTextModify.Clear();
-            jobStatusTextModify.SelectedIndex = 0;
-            entryDateTextModify.Clear();
-            deliveryDateTextModify.Clear();
+            customerNameInput.Clear();
+            customerNumberInput.Clear();
+            jobNameInput.Clear();
+            jobPriceInput.Clear();
+            jobStatusInput.Clear();
+            entryDateInput.SelectedIndex = 0;
+            deliveryDateInput.Clear();
+            jobIdTextBoxForModify.Clear();
+            jobNameTextBoxForModify.Clear();
+            jobPriceTextBoxForModify.Clear();
+            customerNameTextBoxForModify.Clear();
+            customerNumberTextBoxForModify.Clear();
+            jobStatusTextBoxForModify.SelectedIndex = 0;
+            entryDateTextBoxForModify.Clear();
+            deliveryDateTextBoxForModify.Clear();
         }
         private void GetAllJobs()
         {
@@ -97,7 +97,7 @@ namespace ServicesMuoqa.Views
             {
                 jobData.DataSource = null;
                 jobData.DataSource = data;
-                ElementProperties();
+                SetDataGridViewWidth();
             }
             catch (Exception ex)
             {
@@ -106,7 +106,7 @@ namespace ServicesMuoqa.Views
                 MessageBox.Show(ex.Message);
             }
         }
-        private void ElementProperties()
+        private void SetDataGridViewWidth()
         {
             try
             {
@@ -123,62 +123,62 @@ namespace ServicesMuoqa.Views
                 throw new Exception(ex.Message);
             }
         }
-        private RequestedJobs CheckWorkToModify()
+        private RequestedJobs ValidateWorkToModify()
         {
             try
             {
                 int id;
-                if (!string.IsNullOrEmpty(jobIdTextModify.Text))
-                    id = int.Parse(jobIdTextModify.Text);
+                if (!string.IsNullOrEmpty(jobIdTextBoxForModify.Text))
+                    id = int.Parse(jobIdTextBoxForModify.Text);
                 else
                     throw new Exception("Necesitas un id para modificarlo");
                 int row = id - 1;
                 string customerName, customerNumber, jobName, jobPrice, jobStatus;
                 DateTime entry, delivery;
-                if (string.IsNullOrEmpty(customerNameTextModify.Text))
+                if (string.IsNullOrEmpty(customerNameTextBoxForModify.Text))
                     customerName = jobData.Rows[row].Cells[1].Value.ToString() ?? "null";
                 else
-                    customerName = customerNameTextModify.Text;
-                if (string.IsNullOrEmpty(customerNumberTextModify.Text))
+                    customerName = customerNameTextBoxForModify.Text;
+                if (string.IsNullOrEmpty(customerNumberTextBoxForModify.Text))
                     customerNumber = jobData.Rows[row].Cells[2].Value.ToString() ?? "null";
                 else
-                    customerNumber = customerNumberTextModify.Text;
-                if (string.IsNullOrEmpty(jobNameTextModify.Text))
+                    customerNumber = customerNumberTextBoxForModify.Text;
+                if (string.IsNullOrEmpty(jobNameTextBoxForModify.Text))
                     jobName = jobData.Rows[row].Cells[3].Value.ToString() ?? "null";
                 else
-                    jobName = jobNameTextModify.Text;
-                if (string.IsNullOrEmpty(jobPriceTextModify.Text))
+                    jobName = jobNameTextBoxForModify.Text;
+                if (string.IsNullOrEmpty(jobPriceTextBoxForModify.Text))
                     jobPrice = jobData.Rows[row].Cells[4].Value.ToString() ?? "null";
                 else
-                    jobPrice = jobPriceTextModify.Text;
-                if (string.IsNullOrEmpty(jobStatusTextModify.Text))
+                    jobPrice = jobPriceTextBoxForModify.Text;
+                if (string.IsNullOrEmpty(jobStatusTextBoxForModify.Text))
                     jobStatus = jobData.Rows[row].Cells[5].Value.ToString() ?? "null";
                 else
-                    jobStatus = jobStatusTextModify.Text;
-                if (string.IsNullOrEmpty(entryDateTextModify.Text))
+                    jobStatus = jobStatusTextBoxForModify.Text;
+                if (string.IsNullOrEmpty(entryDateTextBoxForModify.Text))
                 {
                     string date = jobData.Rows[row].Cells[6].Value.ToString() ?? "null";
                     string date2 = date.Replace("/", "-") ?? date;// es necesario convertilos a guiones para que permita la conversion a datetime
-                    date2 = AdaptTextToDate(date2);
+                    date2 = ConvertTextToDate(date2);
                     entry = DateTime.ParseExact(date2, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     entry = entry.Date;
                 }
                 else
                 {
-                    string date2 = entryDateTextModify.Text.Replace("/", "-") ?? entryDateTextModify.Text;
+                    string date2 = entryDateTextBoxForModify.Text.Replace("/", "-") ?? entryDateTextBoxForModify.Text;
                     entry = DateTime.ParseExact(date2, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 }
-                if (string.IsNullOrEmpty(deliveryDateTextModify.Text))
+                if (string.IsNullOrEmpty(deliveryDateTextBoxForModify.Text))
                 {
                     string date = jobData.Rows[row].Cells[7].Value.ToString() ?? "null";
                     string date2 = date.Replace("/", "-");
-                    date2 = AdaptTextToDate(date2);
+                    date2 = ConvertTextToDate(date2);
                     delivery = DateTime.ParseExact(date2, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     delivery = delivery.Date;    
                 }
                 else
                 {
-                    string date2 = deliveryDateTextModify.Text.Replace("/", "-") ?? deliveryDateTextModify.Text;
+                    string date2 = deliveryDateTextBoxForModify.Text.Replace("/", "-") ?? deliveryDateTextBoxForModify.Text;
                     delivery = DateTime.ParseExact(date2, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 }
                 RequestedJobs data = new RequestedJobs
@@ -203,7 +203,7 @@ namespace ServicesMuoqa.Views
         //Sirve para colocar un 0 antes del dia.
         //Si es 2-11-2024 no lo acepta como datetime entonces 
         //se convirte a 02-11-2024 
-        private string AdaptTextToDate(string date2)
+        private string ConvertTextToDate(string date2)
         {
             try
             {
@@ -236,52 +236,52 @@ namespace ServicesMuoqa.Views
                 throw new Exception(ex.Message);
             }
         }
-        private RequestedJobs CheckNullOrEmpty()
+        private RequestedJobs ValidateNullOrEmpty()
         {
             try
             {
                 DateTime entryDate, deliveryDate;
-                if (string.IsNullOrEmpty(customerNameText.Text))
+                if (string.IsNullOrEmpty(customerNameInput.Text))
                     throw new Exception("El nombre del cliente no puede estar vacio");
-                if (string.IsNullOrEmpty(customerNumberText.Text))
-                    customerNumberText.Text = "none";
-                if (string.IsNullOrEmpty(jobNameText.Text))
+                if (string.IsNullOrEmpty(customerNumberInput.Text))
+                    customerNumberInput.Text = "none";
+                if (string.IsNullOrEmpty(jobNameInput.Text))
                     throw new Exception("El nombre del trabajo no puede estar vacio");
-                if (string.IsNullOrEmpty(jobPriceText.Text))
+                if (string.IsNullOrEmpty(jobPriceInput.Text))
                     throw new Exception("El precio del trabajo no puede estar vacio");
-                if (string.IsNullOrEmpty(jobStatusText.Text))
-                    jobStatusText.Text = "Ingresado";
-                if (string.IsNullOrEmpty(entryDateText.Text))
+                if (string.IsNullOrEmpty(jobStatusInput.Text))
+                    jobStatusInput.Text = "Ingresado";
+                if (string.IsNullOrEmpty(entryDateInput.Text))
                 {
                     entryDate = DateTime.Now;
                     entryDate = entryDate.Date;
                 }
                 else
                 {
-                    string date = entryDateText.Text;
+                    string date = entryDateInput.Text;
                     date = date.Replace("/", "-");
-                    date = AdaptTextToDate(date);
+                    date = ConvertTextToDate(date);
                     //Para convertir el DateTime en el formato esperado
                     entryDate = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 }
-                if (string.IsNullOrEmpty(deliveryDateText.Text))
+                if (string.IsNullOrEmpty(deliveryDateInput.Text))
                 {
                     throw new Exception("La fecha de entrega no puede estar vacia");
                 }
                 else
                 {
-                    string date = deliveryDateText.Text;
+                    string date = deliveryDateInput.Text;
                     date = date.Replace("/", "-");
-                    date = AdaptTextToDate(date);
+                    date = ConvertTextToDate(date);
                     deliveryDate = DateTime.ParseExact(date, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 }
                 return new RequestedJobs
                 {
-                    CustomerName = customerNameText.Text,
-                    CustomerNumber = customerNumberText.Text,
-                    JobName = jobNameText.Text,
-                    JobPrice = jobPriceText.Text,
-                    JobStatus = jobStatusText.Text,
+                    CustomerName = customerNameInput.Text,
+                    CustomerNumber = customerNumberInput.Text,
+                    JobName = jobNameInput.Text,
+                    JobPrice = jobPriceInput.Text,
+                    JobStatus = jobStatusInput.Text,
                     EntryDate = entryDate,
                     DeliveryDate = deliveryDate
                 };

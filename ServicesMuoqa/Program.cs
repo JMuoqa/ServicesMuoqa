@@ -33,7 +33,7 @@ namespace ServicesMuoqa
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    var mainForm = services.GetRequiredService<Inicio>(); 
+                    var mainForm = services.GetRequiredService<Home>(); 
                     Application.Run(mainForm);
                 }
                 catch (Exception ex)
@@ -59,7 +59,7 @@ namespace ServicesMuoqa
                 services.AddTransient<StatisticsView>();
                 services.AddTransient<UploadJob>();
                 services.AddTransient<MainView>();
-                services.AddTransient<Inicio>();
+                services.AddTransient<Home>();
                 services.AddScoped<ManageServices>();
                 services.AddScoped<LogFinancialTransactions>();
                 services.AddScoped<Jobs>();

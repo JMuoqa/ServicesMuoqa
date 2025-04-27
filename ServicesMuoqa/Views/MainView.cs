@@ -24,13 +24,13 @@ namespace ServicesMuoqa.Views
             _logic = logic ?? throw new ArgumentNullException(nameof(logic));
             InitializeComponent();
             GetAllServices(true);
-            ElementProperties();
+            SetGridWidth();
         }
         private void editButton_Click(object sender, EventArgs e)
         {
             try
             {
-                ServicesPrices objData = CheckEditingParameters();
+                ServicesPrices objData = ValidateEditingParameters();
                 DataTable data = _logic.EditServices(objData);
                 LoadGrid(data);
                 ClearTexts();
@@ -46,7 +46,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
-                ServicesPrices objData = CheckAdditionParameters();
+                ServicesPrices objData = ValidateAdditionParameters();
                 if (objData == null)
                 {
                     throw new Exception("No se encontro ningun servicio");
@@ -67,7 +67,7 @@ namespace ServicesMuoqa.Views
         {
             try
             {
-                if (int.TryParse(idTextDelete.Text, out int id))
+                if (int.TryParse(deleteIdText.Text, out int id))
                 {
                     DataTable data = _logic.DeactivateService(id, "NO");
                     LoadGrid(data);
@@ -86,11 +86,11 @@ namespace ServicesMuoqa.Views
                 ClearTexts();
             }
         }
-        private void activateBtn_Click(object sender, EventArgs e)
+        private void activateButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (int.TryParse(idTextDelete.Text, out int id))
+                if (int.TryParse(deleteIdText.Text, out int id))
                 {
                     DataTable data = _logic.DeactivateService(id, "YES");
                     LoadGrid(data);
@@ -100,7 +100,7 @@ namespace ServicesMuoqa.Views
                 {
                     throw new Exception("Introduca un numero valido");
                 }
-                ElementProperties();
+                SetGridWidth();
             }
             catch (Exception ex)
             {
@@ -130,9 +130,9 @@ namespace ServicesMuoqa.Views
         {
             servicesData.DataSource = null;
             servicesData.DataSource = data;
-            ElementProperties();
+            SetGridWidth();
         }
-        private void ElementProperties()
+        private void SetGridWidth()
         {
             //serviceData
             int sizeDataService = servicesData.Width;
@@ -143,27 +143,27 @@ namespace ServicesMuoqa.Views
             }
             servicesData.ReadOnly = true;
         }
-        private ServicesPrices CheckEditingParameters()
+        private ServicesPrices ValidateEditingParameters()
         {
             try
             {
                 GetAllServices(false);
                 int id;
-                if (!string.IsNullOrEmpty(idTextEdit.Text))
-                    id = int.Parse(idTextEdit.Text);
+                if (!string.IsNullOrEmpty(editIdText.Text))
+                    id = int.Parse(editIdText.Text);
                 else
                     throw new Exception("Necesitas poner un id");
                 int row = id - 1;
                 string name;
                 string price;
-                if (string.IsNullOrEmpty(nameTextEdit.Text))
+                if (string.IsNullOrEmpty(editNameText.Text))
                     name = servicesData.Rows[row].Cells[1].Value.ToString() ?? "null";
                 else
-                    name = nameTextEdit.Text;
-                if (string.IsNullOrEmpty(priceTextEdit.Text))
+                    name = editNameText.Text;
+                if (string.IsNullOrEmpty(editPriceText.Text))
                     price = servicesData.Rows[row].Cells[2].Value.ToString() ?? "null";
                 else
-                    price = priceTextEdit.Text;
+                    price = editPriceText.Text;
                 if (price == "null" || name == "null")
                     throw new Exception("El id no existe");
 
@@ -186,12 +186,12 @@ namespace ServicesMuoqa.Views
         }
         private void ClearTexts()
         {
-            idTextEdit.Clear();
-            nameTextEdit.Clear();
-            priceTextEdit.Clear();
-            priceTextAdd.Clear();
-            nameTextAdd.Clear();
-            idTextDelete.Clear();
+            editIdText.Clear();
+            editNameText.Clear();
+            editPriceText.Clear();
+            addPriceText.Clear();
+            addNameText.Clear();
+            deleteIdText.Clear();
         }
         private List<string> GetServices(string text)
         {
@@ -220,17 +220,17 @@ namespace ServicesMuoqa.Views
                 return null;
             }
         }
-        private ServicesPrices CheckAdditionParameters()
+        private ServicesPrices ValidateAdditionParameters()
         {
             try
             {
                 GetAllServices(false);
-                if ((!string.IsNullOrEmpty(nameTextAdd.Text)) && (!string.IsNullOrEmpty(priceTextAdd.Text)))
+                if ((!string.IsNullOrEmpty(addNameText.Text)) && (!string.IsNullOrEmpty(addPriceText.Text)))
                 {
                     ServicesPrices data = new ServicesPrices
                     {
-                        ServiceName = nameTextAdd.Text,
-                        ServicePrice = priceTextAdd.Text
+                        ServiceName = addNameText.Text,
+                        ServicePrice = addPriceText.Text
                     };
                     ClearTexts();
                     return data;
@@ -245,7 +245,7 @@ namespace ServicesMuoqa.Views
                 return null;
             }
         }
-        private bool CheckChar(char character)
+        private bool ValidateChar(char character)
         {
             //Como la clase KeyEventsArgs no tiene la funcion char.IsLetter y otras
             //Simulo unas de esas funciones con esto
@@ -268,7 +268,7 @@ namespace ServicesMuoqa.Views
                 return false;
             }
         }
-        private bool CheckKey(KeyEventArgs e)
+        private bool ValidateKey(KeyEventArgs e)
         {
             try
             {
@@ -320,7 +320,7 @@ namespace ServicesMuoqa.Views
         }
 
         //Funciones de los textbox
-        private void nameTextAdd_KeyPress(object sender, KeyPressEventArgs e)
+        private void addNameText_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsSymbol(e.KeyChar))
             {
@@ -329,23 +329,23 @@ namespace ServicesMuoqa.Views
         }
         private void priceTextAdd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (string.IsNullOrEmpty(priceTextAdd.Text))
+            if (string.IsNullOrEmpty(addPriceText.Text))
             {
                 //if (char.IsLetter(e.KeyChar))
                 //    e.Handled = true;
-                priceTextAdd.Text = "$";
+                addPriceText.Text = "$";
                 char press = e.KeyChar;
                 e.Handled = true;
                 if (press != '$' && char.IsNumber(press))
-                    priceTextAdd.Text += press;
-                priceTextAdd.SelectionStart = priceTextAdd.Text.Length;
+                    addPriceText.Text += press;
+                addPriceText.SelectionStart = addPriceText.Text.Length;
             }
-            if ((char.IsLetter(e.KeyChar)||char.IsSymbol(e.KeyChar)) && priceTextAdd.Text.Length == 1)
+            if ((char.IsLetter(e.KeyChar)||char.IsSymbol(e.KeyChar)) && addPriceText.Text.Length == 1)
             {
                 e.Handled = true;
             }
         }
-        private void idTextDelete_KeyPress(object sender, KeyPressEventArgs e)
+        private void deleteIdText_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsNumber(e.KeyChar))
             {
@@ -356,41 +356,41 @@ namespace ServicesMuoqa.Views
                 e.Handled = true;
             }
         }
-        private void priceTextEdit_KeyPress(object sender, KeyPressEventArgs e)
+        private void editPriceText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (string.IsNullOrEmpty(priceTextEdit.Text))
+            if (string.IsNullOrEmpty(editPriceText.Text))
             {
                 if (char.IsLetter(e.KeyChar))
                     e.Handled = true;
-                priceTextEdit.Text = "$";
+                editPriceText.Text = "$";
                 char press = e.KeyChar;
                 e.Handled = true;
                 if (press != '$' && char.IsNumber(press))
-                    priceTextEdit.Text += press;
-                priceTextEdit.SelectionStart = priceTextEdit.Text.Length;
+                    editPriceText.Text += press;
+                editPriceText.SelectionStart = editPriceText.Text.Length;
             }
-            if (char.IsLetter(e.KeyChar) && priceTextEdit.Text.Length == 1)
+            if (char.IsLetter(e.KeyChar) && editPriceText.Text.Length == 1)
             {
                 e.Handled = true;
             }
         }
-        private void cmbTextSearch_KeyUp(object sender, KeyEventArgs e)
+        private void searchComboBoxText_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
                 List<string> list = new List<string>();
-                if (!string.IsNullOrEmpty(cmbTextSearch.Text)&&e.KeyCode == Keys.Back) 
+                if (!string.IsNullOrEmpty(searchComboBoxText.Text)&&e.KeyCode == Keys.Back) 
                 {
-                    string text = cmbTextSearch.Text;
+                    string text = searchComboBoxText.Text;
                     list = GetServices(text);
-                    if (cmbTextSearch.Items.Count>0)
-                        cmbTextSearch.Items.Clear();
-                    cmbTextSearch.SelectionStart = cmbTextSearch.Text.Length;
-                    cmbTextSearch.DroppedDown = true;
+                    if (searchComboBoxText.Items.Count>0)
+                        searchComboBoxText.Items.Clear();
+                    searchComboBoxText.SelectionStart = searchComboBoxText.Text.Length;
+                    searchComboBoxText.DroppedDown = true;
                 }
-                else if(string.IsNullOrEmpty(cmbTextSearch.Text) && e.KeyCode == Keys.Back)
+                else if(string.IsNullOrEmpty(searchComboBoxText.Text) && e.KeyCode == Keys.Back)
                 {
-                    cmbTextSearch.DroppedDown = false;
+                    searchComboBoxText.DroppedDown = false;
                     GetAllServices(true);
                 }
             }
@@ -401,21 +401,21 @@ namespace ServicesMuoqa.Views
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void cmbTextSearch_KeyDown(object sender, KeyEventArgs e)
+        private void searchComboBoxText_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
-                bool checkKey = CheckKey(e);
+                bool checkKey = ValidateKey(e);
                 string character = e.KeyCode.ToString().ToLower();
                 char c;
                 bool flag = char.TryParse(character, out c);
                 if (checkKey && flag)//Comprueba si la tecla precionada es una tecla no deseada, como controlo la tecla borrar
                 {                   
-                    if (CheckChar(c))//Aca comprueba si la tecla esta dentro del "diccionario personalizado" de La funcion CheckChar.
+                    if (ValidateChar(c))//Aca comprueba si la tecla esta dentro del "diccionario personalizado" de La funcion CheckChar.
                     {               //No se puede usar char.IsLetter por que solo sirve en la clase "KeyPresEventArgs"
                         List<string> list = new List<string>();
                         string text = "";
-                        if (string.IsNullOrEmpty(cmbTextSearch.Text)) 
+                        if (string.IsNullOrEmpty(searchComboBoxText.Text)) 
                         {
                             text = character;
                             if (Control.IsKeyLocked(Keys.CapsLock))//Comprueba si el Mayus esta activado
@@ -426,24 +426,24 @@ namespace ServicesMuoqa.Views
                         {
                             if (Control.IsKeyLocked(Keys.CapsLock))
                                 character = character.ToUpper();
-                            text = cmbTextSearch.Text + character;//Esto es necesario ya que el evento KeyDown no llega a añadir la letra presionada
+                            text = searchComboBoxText.Text + character;//Esto es necesario ya que el evento KeyDown no llega a añadir la letra presionada
                             list = GetServices(text);
                         }
-                        if (cmbTextSearch.Items.Count > 0)
-                            cmbTextSearch.Items.Clear();
-                        cmbTextSearch.Items.Add(text);
+                        if (searchComboBoxText.Items.Count > 0)
+                            searchComboBoxText.Items.Clear();
+                        searchComboBoxText.Items.Add(text);
                         for (int i = 0; i < list.Count; i++)
                         {
-                            cmbTextSearch.Items.Add(list[i]);
+                            searchComboBoxText.Items.Add(list[i]);
                         }
-                        cmbTextSearch.SelectionStart = cmbTextSearch.Text.Length;
-                        cmbTextSearch.DroppedDown = true;
+                        searchComboBoxText.SelectionStart = searchComboBoxText.Text.Length;
+                        searchComboBoxText.DroppedDown = true;
                     }
                 }
                 else
                 {
-                    if(cmbTextSearch.Text.Length > 0)
-                        cmbTextSearch.SelectionStart = cmbTextSearch.Text.Length;
+                    if(searchComboBoxText.Text.Length > 0)
+                        searchComboBoxText.SelectionStart = searchComboBoxText.Text.Length;
                 }
             }
             catch (Exception ex)

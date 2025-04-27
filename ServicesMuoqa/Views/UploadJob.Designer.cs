@@ -34,13 +34,14 @@ namespace ServicesMuoqa.Views
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             jobData = new DataGridView();
             jobAddGroup = new GroupBox();
+            entryDateInput = new ComboBox();
             addJobButton = new Button();
-            deliveryDateText = new TextBox();
-            jobStatusText = new TextBox();
-            jobPriceText = new TextBox();
-            jobNameText = new TextBox();
-            customerNumberText = new TextBox();
-            customerNameText = new TextBox();
+            deliveryDateInput = new TextBox();
+            jobStatusInput = new TextBox();
+            jobPriceInput = new TextBox();
+            jobNameInput = new TextBox();
+            customerNumberInput = new TextBox();
+            customerNameInput = new TextBox();
             deliveryDate = new Label();
             entryDate = new Label();
             jobStatus = new Label();
@@ -50,16 +51,16 @@ namespace ServicesMuoqa.Views
             customerName = new Label();
             modifyJobButton = new Button();
             jobModifyGroup = new GroupBox();
-            jobStatusTextModify = new ComboBox();
+            jobStatusTextBoxForModify = new ComboBox();
             instruction = new Label();
-            jobIdTextModify = new TextBox();
+            jobIdTextBoxForModify = new TextBox();
             label8 = new Label();
-            deliveryDateTextModify = new TextBox();
-            entryDateTextModify = new TextBox();
-            jobPriceTextModify = new TextBox();
-            jobNameTextModify = new TextBox();
-            customerNumberTextModify = new TextBox();
-            customerNameTextModify = new TextBox();
+            deliveryDateTextBoxForModify = new TextBox();
+            entryDateTextBoxForModify = new TextBox();
+            jobPriceTextBoxForModify = new TextBox();
+            jobNameTextBoxForModify = new TextBox();
+            customerNumberTextBoxForModify = new TextBox();
+            customerNameTextBoxForModify = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -67,7 +68,6 @@ namespace ServicesMuoqa.Views
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            entryDateText = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)jobData).BeginInit();
             jobAddGroup.SuspendLayout();
             jobModifyGroup.SuspendLayout();
@@ -106,14 +106,14 @@ namespace ServicesMuoqa.Views
             // 
             // jobAddGroup
             // 
-            jobAddGroup.Controls.Add(entryDateText);
+            jobAddGroup.Controls.Add(entryDateInput);
             jobAddGroup.Controls.Add(addJobButton);
-            jobAddGroup.Controls.Add(deliveryDateText);
-            jobAddGroup.Controls.Add(jobStatusText);
-            jobAddGroup.Controls.Add(jobPriceText);
-            jobAddGroup.Controls.Add(jobNameText);
-            jobAddGroup.Controls.Add(customerNumberText);
-            jobAddGroup.Controls.Add(customerNameText);
+            jobAddGroup.Controls.Add(deliveryDateInput);
+            jobAddGroup.Controls.Add(jobStatusInput);
+            jobAddGroup.Controls.Add(jobPriceInput);
+            jobAddGroup.Controls.Add(jobNameInput);
+            jobAddGroup.Controls.Add(customerNumberInput);
+            jobAddGroup.Controls.Add(customerNameInput);
             jobAddGroup.Controls.Add(deliveryDate);
             jobAddGroup.Controls.Add(entryDate);
             jobAddGroup.Controls.Add(jobStatus);
@@ -129,6 +129,15 @@ namespace ServicesMuoqa.Views
             jobAddGroup.TabStop = false;
             jobAddGroup.Text = "Añadir";
             // 
+            // entryDateInput
+            // 
+            entryDateInput.FormattingEnabled = true;
+            entryDateInput.Items.AddRange(new object[] { "", "Presupuestar", "Confirmados", "Esperando Corf", "Sin reparación", "Reparado" });
+            entryDateInput.Location = new Point(686, 46);
+            entryDateInput.Name = "entryDateInput";
+            entryDateInput.Size = new Size(130, 23);
+            entryDateInput.TabIndex = 17;
+            // 
             // addJobButton
             // 
             addJobButton.BackColor = Color.Transparent;
@@ -142,48 +151,48 @@ namespace ServicesMuoqa.Views
             addJobButton.UseVisualStyleBackColor = false;
             addJobButton.Click += addJobButton_Click;
             // 
-            // deliveryDateText
+            // deliveryDateInput
             // 
-            deliveryDateText.Location = new Point(822, 46);
-            deliveryDateText.Name = "deliveryDateText";
-            deliveryDateText.Size = new Size(130, 23);
-            deliveryDateText.TabIndex = 15;
+            deliveryDateInput.Location = new Point(822, 46);
+            deliveryDateInput.Name = "deliveryDateInput";
+            deliveryDateInput.Size = new Size(130, 23);
+            deliveryDateInput.TabIndex = 15;
             // 
-            // jobStatusText
+            // jobStatusInput
             // 
-            jobStatusText.Location = new Point(550, 46);
-            jobStatusText.Name = "jobStatusText";
-            jobStatusText.Size = new Size(130, 23);
-            jobStatusText.TabIndex = 12;
+            jobStatusInput.Location = new Point(550, 46);
+            jobStatusInput.Name = "jobStatusInput";
+            jobStatusInput.Size = new Size(130, 23);
+            jobStatusInput.TabIndex = 12;
             // 
-            // jobPriceText
+            // jobPriceInput
             // 
-            jobPriceText.Location = new Point(414, 46);
-            jobPriceText.Name = "jobPriceText";
-            jobPriceText.Size = new Size(130, 23);
-            jobPriceText.TabIndex = 11;
-            jobPriceText.KeyPress += PriceTextBox_KeyPress;
+            jobPriceInput.Location = new Point(414, 46);
+            jobPriceInput.Name = "jobPriceInput";
+            jobPriceInput.Size = new Size(130, 23);
+            jobPriceInput.TabIndex = 11;
+            jobPriceInput.KeyPress += PriceTextBox_KeyPress;
             // 
-            // jobNameText
+            // jobNameInput
             // 
-            jobNameText.Location = new Point(278, 46);
-            jobNameText.Name = "jobNameText";
-            jobNameText.Size = new Size(130, 23);
-            jobNameText.TabIndex = 10;
+            jobNameInput.Location = new Point(278, 46);
+            jobNameInput.Name = "jobNameInput";
+            jobNameInput.Size = new Size(130, 23);
+            jobNameInput.TabIndex = 10;
             // 
-            // customerNumberText
+            // customerNumberInput
             // 
-            customerNumberText.Location = new Point(142, 46);
-            customerNumberText.Name = "customerNumberText";
-            customerNumberText.Size = new Size(130, 23);
-            customerNumberText.TabIndex = 9;
+            customerNumberInput.Location = new Point(142, 46);
+            customerNumberInput.Name = "customerNumberInput";
+            customerNumberInput.Size = new Size(130, 23);
+            customerNumberInput.TabIndex = 9;
             // 
-            // customerNameText
+            // customerNameInput
             // 
-            customerNameText.Location = new Point(6, 46);
-            customerNameText.Name = "customerNameText";
-            customerNameText.Size = new Size(130, 23);
-            customerNameText.TabIndex = 8;
+            customerNameInput.Location = new Point(6, 46);
+            customerNameInput.Name = "customerNameInput";
+            customerNameInput.Size = new Size(130, 23);
+            customerNameInput.TabIndex = 8;
             // 
             // deliveryDate
             // 
@@ -263,17 +272,17 @@ namespace ServicesMuoqa.Views
             // 
             // jobModifyGroup
             // 
-            jobModifyGroup.Controls.Add(jobStatusTextModify);
+            jobModifyGroup.Controls.Add(jobStatusTextBoxForModify);
             jobModifyGroup.Controls.Add(instruction);
-            jobModifyGroup.Controls.Add(jobIdTextModify);
+            jobModifyGroup.Controls.Add(jobIdTextBoxForModify);
             jobModifyGroup.Controls.Add(label8);
-            jobModifyGroup.Controls.Add(deliveryDateTextModify);
+            jobModifyGroup.Controls.Add(deliveryDateTextBoxForModify);
             jobModifyGroup.Controls.Add(modifyJobButton);
-            jobModifyGroup.Controls.Add(entryDateTextModify);
-            jobModifyGroup.Controls.Add(jobPriceTextModify);
-            jobModifyGroup.Controls.Add(jobNameTextModify);
-            jobModifyGroup.Controls.Add(customerNumberTextModify);
-            jobModifyGroup.Controls.Add(customerNameTextModify);
+            jobModifyGroup.Controls.Add(entryDateTextBoxForModify);
+            jobModifyGroup.Controls.Add(jobPriceTextBoxForModify);
+            jobModifyGroup.Controls.Add(jobNameTextBoxForModify);
+            jobModifyGroup.Controls.Add(customerNumberTextBoxForModify);
+            jobModifyGroup.Controls.Add(customerNameTextBoxForModify);
             jobModifyGroup.Controls.Add(label1);
             jobModifyGroup.Controls.Add(label2);
             jobModifyGroup.Controls.Add(label3);
@@ -289,14 +298,14 @@ namespace ServicesMuoqa.Views
             jobModifyGroup.TabStop = false;
             jobModifyGroup.Text = "Modificar";
             // 
-            // jobStatusTextModify
+            // jobStatusTextBoxForModify
             // 
-            jobStatusTextModify.FormattingEnabled = true;
-            jobStatusTextModify.Items.AddRange(new object[] { "", "Presupuestar", "Confirmados", "Esperando Corf", "Sin reparación", "Reparado" });
-            jobStatusTextModify.Location = new Point(686, 46);
-            jobStatusTextModify.Name = "jobStatusTextModify";
-            jobStatusTextModify.Size = new Size(130, 23);
-            jobStatusTextModify.TabIndex = 21;
+            jobStatusTextBoxForModify.FormattingEnabled = true;
+            jobStatusTextBoxForModify.Items.AddRange(new object[] { "", "Presupuestar", "Confirmados", "Esperando Corf", "Sin reparación", "Reparado" });
+            jobStatusTextBoxForModify.Location = new Point(686, 46);
+            jobStatusTextBoxForModify.Name = "jobStatusTextBoxForModify";
+            jobStatusTextBoxForModify.Size = new Size(130, 23);
+            jobStatusTextBoxForModify.TabIndex = 21;
             // 
             // instruction
             // 
@@ -307,12 +316,12 @@ namespace ServicesMuoqa.Views
             instruction.TabIndex = 20;
             instruction.Text = "El unico parametro obligatorio es el \"Id\"";
             // 
-            // jobIdTextModify
+            // jobIdTextBoxForModify
             // 
-            jobIdTextModify.Location = new Point(6, 46);
-            jobIdTextModify.Name = "jobIdTextModify";
-            jobIdTextModify.Size = new Size(130, 23);
-            jobIdTextModify.TabIndex = 19;
+            jobIdTextBoxForModify.Location = new Point(6, 46);
+            jobIdTextBoxForModify.Name = "jobIdTextBoxForModify";
+            jobIdTextBoxForModify.Size = new Size(130, 23);
+            jobIdTextBoxForModify.TabIndex = 19;
             // 
             // label8
             // 
@@ -323,48 +332,48 @@ namespace ServicesMuoqa.Views
             label8.TabIndex = 18;
             label8.Text = "Id del Trabajo *";
             // 
-            // deliveryDateTextModify
+            // deliveryDateTextBoxForModify
             // 
-            deliveryDateTextModify.Location = new Point(6, 104);
-            deliveryDateTextModify.Name = "deliveryDateTextModify";
-            deliveryDateTextModify.Size = new Size(130, 23);
-            deliveryDateTextModify.TabIndex = 15;
+            deliveryDateTextBoxForModify.Location = new Point(6, 104);
+            deliveryDateTextBoxForModify.Name = "deliveryDateTextBoxForModify";
+            deliveryDateTextBoxForModify.Size = new Size(130, 23);
+            deliveryDateTextBoxForModify.TabIndex = 15;
             // 
-            // entryDateTextModify
+            // entryDateTextBoxForModify
             // 
-            entryDateTextModify.Location = new Point(822, 46);
-            entryDateTextModify.Name = "entryDateTextModify";
-            entryDateTextModify.Size = new Size(130, 23);
-            entryDateTextModify.TabIndex = 14;
+            entryDateTextBoxForModify.Location = new Point(822, 46);
+            entryDateTextBoxForModify.Name = "entryDateTextBoxForModify";
+            entryDateTextBoxForModify.Size = new Size(130, 23);
+            entryDateTextBoxForModify.TabIndex = 14;
             // 
-            // jobPriceTextModify
+            // jobPriceTextBoxForModify
             // 
-            jobPriceTextModify.Location = new Point(550, 46);
-            jobPriceTextModify.Name = "jobPriceTextModify";
-            jobPriceTextModify.Size = new Size(130, 23);
-            jobPriceTextModify.TabIndex = 11;
-            jobPriceTextModify.KeyPress += PriceTextBox_KeyPress;
+            jobPriceTextBoxForModify.Location = new Point(550, 46);
+            jobPriceTextBoxForModify.Name = "jobPriceTextBoxForModify";
+            jobPriceTextBoxForModify.Size = new Size(130, 23);
+            jobPriceTextBoxForModify.TabIndex = 11;
+            jobPriceTextBoxForModify.KeyPress += PriceTextBox_KeyPress;
             // 
-            // jobNameTextModify
+            // jobNameTextBoxForModify
             // 
-            jobNameTextModify.Location = new Point(414, 46);
-            jobNameTextModify.Name = "jobNameTextModify";
-            jobNameTextModify.Size = new Size(130, 23);
-            jobNameTextModify.TabIndex = 10;
+            jobNameTextBoxForModify.Location = new Point(414, 46);
+            jobNameTextBoxForModify.Name = "jobNameTextBoxForModify";
+            jobNameTextBoxForModify.Size = new Size(130, 23);
+            jobNameTextBoxForModify.TabIndex = 10;
             // 
-            // customerNumberTextModify
+            // customerNumberTextBoxForModify
             // 
-            customerNumberTextModify.Location = new Point(278, 46);
-            customerNumberTextModify.Name = "customerNumberTextModify";
-            customerNumberTextModify.Size = new Size(130, 23);
-            customerNumberTextModify.TabIndex = 9;
+            customerNumberTextBoxForModify.Location = new Point(278, 46);
+            customerNumberTextBoxForModify.Name = "customerNumberTextBoxForModify";
+            customerNumberTextBoxForModify.Size = new Size(130, 23);
+            customerNumberTextBoxForModify.TabIndex = 9;
             // 
-            // customerNameTextModify
+            // customerNameTextBoxForModify
             // 
-            customerNameTextModify.Location = new Point(142, 46);
-            customerNameTextModify.Name = "customerNameTextModify";
-            customerNameTextModify.Size = new Size(130, 23);
-            customerNameTextModify.TabIndex = 8;
+            customerNameTextBoxForModify.Location = new Point(142, 46);
+            customerNameTextBoxForModify.Name = "customerNameTextBoxForModify";
+            customerNameTextBoxForModify.Size = new Size(130, 23);
+            customerNameTextBoxForModify.TabIndex = 8;
             // 
             // label1
             // 
@@ -429,15 +438,6 @@ namespace ServicesMuoqa.Views
             label7.TabIndex = 0;
             label7.Text = "Nombre del Cliente";
             // 
-            // entryDateText
-            // 
-            entryDateText.FormattingEnabled = true;
-            entryDateText.Items.AddRange(new object[] { "", "Presupuestar", "Confirmados", "Esperando Corf", "Sin reparación", "Reparado" });
-            entryDateText.Location = new Point(686, 46);
-            entryDateText.Name = "entryDateText";
-            entryDateText.Size = new Size(130, 23);
-            entryDateText.TabIndex = 17;
-            // 
             // UploadJob
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -467,23 +467,23 @@ namespace ServicesMuoqa.Views
         private Label jobPrice;
         private Label jobName;
         private Label jobStatus;
-        private TextBox deliveryDateText;
-        private TextBox jobStatusText;
-        private TextBox jobPriceText;
-        private TextBox jobNameText;
-        private TextBox customerNumberText;
-        private TextBox customerNameText;
+        private TextBox deliveryDateInput;
+        private TextBox jobStatusInput;
+        private TextBox jobPriceInput;
+        private TextBox jobNameInput;
+        private TextBox customerNumberInput;
+        private TextBox customerNameInput;
         private Label deliveryDate;
         private Label entryDate;
         private Button addJobButton;
         private Button modifyJobButton;
         private GroupBox jobModifyGroup;
-        private TextBox deliveryDateTextModify;
-        private TextBox entryDateTextModify;
-        private TextBox jobPriceTextModify;
-        private TextBox jobNameTextModify;
-        private TextBox customerNumberTextModify;
-        private TextBox customerNameTextModify;
+        private TextBox deliveryDateTextBoxForModify;
+        private TextBox entryDateTextBoxForModify;
+        private TextBox jobPriceTextBoxForModify;
+        private TextBox jobNameTextBoxForModify;
+        private TextBox customerNumberTextBoxForModify;
+        private TextBox customerNameTextBoxForModify;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -491,10 +491,10 @@ namespace ServicesMuoqa.Views
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox jobIdTextModify;
+        private TextBox jobIdTextBoxForModify;
         private Label label8;
         private Label instruction;
-        private ComboBox jobStatusTextModify;
-        private ComboBox entryDateText;
+        private ComboBox jobStatusTextBoxForModify;
+        private ComboBox entryDateInput;
     }
 }

@@ -3,7 +3,7 @@
 namespace ServicesMuoqa
 {
 
-    partial class Inicio
+    partial class Home
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,10 +31,10 @@ namespace ServicesMuoqa
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             Container = new Panel();
             Menu = new MenuStrip();
-            informacionToolStripMenuItem = new ToolStripMenuItem();
+            informationToolStripMenuItem = new ToolStripMenuItem();
             trabajosToolStripMenuItem = new ToolStripMenuItem();
             cargarToolStripMenuItem = new ToolStripMenuItem();
             estadisticasToolStripMenuItem = new ToolStripMenuItem();
@@ -52,22 +52,22 @@ namespace ServicesMuoqa
             // Menu
             // 
             Menu.BackColor = Color.FromArgb(20, 26, 35);
-            Menu.Items.AddRange(new ToolStripItem[] { informacionToolStripMenuItem, trabajosToolStripMenuItem, estadisticasToolStripMenuItem });
+            Menu.Items.AddRange(new ToolStripItem[] { informationToolStripMenuItem, trabajosToolStripMenuItem, estadisticasToolStripMenuItem });
             Menu.Location = new Point(0, 0);
             Menu.Name = "Menu";
             Menu.Size = new Size(1263, 24);
             Menu.TabIndex = 1;
             Menu.Text = "menuStrip1";
             // 
-            // informacionToolStripMenuItem
+            // informationToolStripMenuItem
             // 
-            informacionToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
-            informacionToolStripMenuItem.ForeColor = Color.White;
-            informacionToolStripMenuItem.Name = "informacionToolStripMenuItem";
-            informacionToolStripMenuItem.Size = new Size(89, 20);
-            informacionToolStripMenuItem.Text = "ServiciosWeb";
-            informacionToolStripMenuItem.Click += informacionToolStripMenuItem_Click;
-            informacionToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
+            informationToolStripMenuItem.BackColor = Color.FromArgb(20, 26, 35);
+            informationToolStripMenuItem.ForeColor = Color.White;
+            informationToolStripMenuItem.Name = "informationToolStripMenuItem";
+            informationToolStripMenuItem.Size = new Size(89, 20);
+            informationToolStripMenuItem.Text = "ServiciosWeb";
+            informationToolStripMenuItem.Click += informacionToolStripMenuItem_Click;
+            informationToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
             // trabajosToolStripMenuItem
             // 
@@ -99,7 +99,7 @@ namespace ServicesMuoqa
             estadisticasToolStripMenuItem.Click += estadisticasToolStripMenuItem_Click;
             estadisticasToolStripMenuItem.Paint += ToolStripMenuItem_Paint;
             // 
-            // Inicio
+            // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -110,7 +110,7 @@ namespace ServicesMuoqa
             ForeColor = Color.White;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = Menu;
-            Name = "Inicio";
+            Name = "Home";
             Text = "Inicio";
             Menu.ResumeLayout(false);
             Menu.PerformLayout();
@@ -122,7 +122,7 @@ namespace ServicesMuoqa
 
         private new Panel Container;
         private MenuStrip Menu;
-        private ToolStripMenuItem informacionToolStripMenuItem;
+        private ToolStripMenuItem informationToolStripMenuItem;
         private ToolStripMenuItem trabajosToolStripMenuItem;
         private ToolStripMenuItem cargarToolStripMenuItem;
         private ToolStripMenuItem estadisticasToolStripMenuItem;
